@@ -22,7 +22,7 @@ AI KASUTAMISE JUHUD
 
 Prompt:
 "Aita mul planeerida Flask veebirakendust, mis kogub andmeid 
-mitmest Eesti kultuuriallikast (ERR, Postimees, Culture.ee, 
+mitmest Eesti kultuuriallikast (ERR, Postimees, Eesti kultuurisündmused, 
 Wikipedia). Milline peaks olema projekti struktuur ja milliseid 
 tehnoloogiaid kasutada?"
 

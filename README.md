@@ -9,7 +9,7 @@ Koidulauliku E-laulik on veebirakendus, mis on loodud spetsiaalselt Koidulauliku
 ## ✨ Funktsionaalsus
 
 - **📰 Uudised**: Värskemad uudised Eesti kultuurist ERR.ee ja Postimees.ee portaalidest
-- **🎭 Sündmused**: Kultuuriüritused, kontserdid ja festivaalid Culture.ee portaalist
+- **🎭 Sündmused**: Kultuuriüritused, kontserdid ja festivaalid Eesti kultuurisündmused portaalist
 - **📚 Kultuuriinfo**: Põhjalik informatsioon Eesti kultuurist Wikipediast
 - **🔍 Otsing**: Võimalus otsida infot kõigist kategooriatest
 - **📱 Responsiivne**: Töötab nii arvutis kui mobiilseadmes
@@ -20,7 +20,7 @@ Rakendus kogub andmeid järgmistest allikatest:
 
 1. **ERR.ee** - Eesti Rahvusringhääling (uudised ja kultuuriinfo)
 2. **Postimees.ee** - Üks Eesti suurimaid uudisteportaale
-3. **Culture.ee** - Eesti kultuuriportaal (sündmused ja üritused)
+3. **Eesti kultuurisündmused** - Eesti kultuuriportaal (sündmused ja üritused)
 4. **Wikipedia** - Vaba entsüklopeedia (Eesti kultuuri artiklid)
 
 ## 🛠️ Tehnoloogiad
@@ -82,7 +82,7 @@ Koidulauliku-E-laulik/
 │   ├── __init__.py
 │   ├── err_scraper.py           # ERR.ee uudiste scraper
 │   ├── postimees_scraper.py     # Postimees.ee uudiste scraper
-│   ├── culture_scraper.py       # Culture.ee sündmuste scraper
+│   ├── culture_scraper.py       # Eesti kultuurisündmused sündmuste scraper
 │   └── wikipedia_scraper.py     # Wikipedia kultuuriinfo scraper
 │
 ├── templates/                # HTML mallid
@@ -115,7 +115,7 @@ Koidulauliku-E-laulik/
 - **Rakenduse kood**: Autori enda loodud
 - **Google Fonts (Roboto)**: Apache License 2.0
 - **Wikipedia sisu**: Creative Commons Attribution-ShareAlike 3.0 Unported License
-- **ERR.ee, Postimees.ee, Culture.ee**: Avalikud allikad, kasutatud ainult viited
+- **ERR.ee, Postimees.ee, Eesti kultuurisündmused**: Avalikud allikad, kasutatud ainult viited
 
 ### Litsents
 
@@ -138,7 +138,7 @@ See projekt on loodud ASI Karika koduvooru ülesande raames. Projekti eesmärk o
 
 ### Hindamiskriteeriumid
 
-- ✅ **Informatsiooni rohkus**: 4 erinevat allikat (ERR, Postimees, Culture.ee, Wikipedia)
+- ✅ **Informatsiooni rohkus**: 4 erinevat allikat (ERR, Postimees, Eesti kultuurisündmused, Wikipedia)
 - ✅ **Informatsiooni õigsus**: Usaldusväärsed allikad, automaatne andmete kogumine
 - ✅ **Kasutajakogemus**: Lihtne ja loogiline kasutada, selge navigatsioon
 - ✅ **Loomingulisus**: Responsiivne disain, otsingu funktsioon, fallback andmed

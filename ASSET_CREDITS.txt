@@ -75,8 +75,8 @@ ANDMEALLIKAD
    Märkus: Kasutatud ainult avalikud viited artiklitele,
            rakendus ei kopeeri sisu, vaid viitab originaalile
 
-3. Culture.ee
-   Link: https://www.culture.ee
+3. Eesti kultuurisündmused
+   Link: https://www.eestigiid.ee
    Autor: Eesti kultuuriportaal
    Kasutamine: Kultuurisündmuste kogumine
    Märkus: Kasutatud ainult avalikud viited sündmustele,
@@ -135,7 +135,7 @@ PILDID
 
 Märkus: Rakendus ei sisalda staatilist pildimaterjali.
         Pildid (kui neid kuvatakse) pärinevad veebiallikatest
-        (ERR.ee, Postimees.ee, Culture.ee) ja on viited
+        (ERR.ee, Postimees.ee, Eesti kultuurisündmused) ja on viited
         originaalidele nende serverites.
 
 ═══════════════════════════════════════════════════════════════
@@ -152,6 +152,10 @@ Kõik projektis kasutatud materjalid on:
 
 Projekt ei sisalda autoriõigustega kaitstud materjale, mis ei ole
 vabalt kasutatavad või mille kasutamine ei ole lubatud.
+
+Märkus: Eesti kultuurisündmused, ERR.ee ja Postimees.ee on kasutatud ainult 
+        viitamiseks. Rakendus ei kopeeri nende sisu, vaid viitab
+        originaalartiklitele nende veebilehtedel.
 
 ═══════════════════════════════════════════════════════════════
 LITSENTSITEAVE

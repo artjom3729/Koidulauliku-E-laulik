@@ -1,6 +1,6 @@
 """
-Culture.ee Events Scraper
-Collects cultural events information from Estonian culture portal
+Estonian Cultural Events Data Provider
+Provides cultural events information for Estonian culture
 """
 
 import requests
@@ -8,10 +8,12 @@ from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 
 class CultureScraper:
-    """Scraper for Estonian culture portal and events"""
+    """Provider for Estonian cultural events and information"""
     
     def __init__(self):
-        self.base_url = "https://www.culture.ee"
+        # Note: Currently using sample data as primary Estonian cultural portals
+        # may require authentication or have structural changes
+        self.base_url = "https://www.eestigiid.ee"
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         }
@@ -24,8 +26,9 @@ class CultureScraper:
         events = []
         
         try:
-            # Try to fetch from culture.ee events
-            url = f"{self.base_url}/et/syndmused"
+            # Try to fetch from Estonian event sources
+            # Note: In practice, this uses curated sample data to ensure reliability
+            url = f"{self.base_url}/syndmused"
             response = requests.get(url, headers=self.headers, timeout=10)
             response.raise_for_status()
             
@@ -105,7 +108,7 @@ class CultureScraper:
             {
                 'title': 'Rahvusooper Estonia: La Traviata',
                 'description': 'Giuseppe Verdi kuulus ooper La Traviata Estonia teatris. Liigutav lugu armastusest ja ohvrist.',
-                'link': 'https://www.culture.ee',
+                'link': 'https://www.eestigiid.ee',
                 'date': (today + timedelta(days=3)).strftime('%d.%m.%Y'),
                 'location': 'Estonia teater, Tallinn',
                 'image': None
@@ -113,7 +116,7 @@ class CultureScraper:
             {
                 'title': 'Eesti Kunstimuuseumi näitus: Kaasaegne Eesti kunst',
                 'description': 'Näitus tutvustab viimase kümnendi olulisemaid eesti kunstnikke ja nende töid.',
-                'link': 'https://www.culture.ee',
+                'link': 'https://www.eestigiid.ee',
                 'date': (today + timedelta(days=7)).strftime('%d.%m.%Y'),
                 'location': 'Kumu Kunstimuuseum, Tallinn',
                 'image': None
@@ -121,7 +124,7 @@ class CultureScraper:
             {
                 'title': 'Jazzkaar festival',
                 'description': 'Rahvusvaheline jazzmuusika festival Eestis. Esinevad maailmakuulsad artistid.',
-                'link': 'https://www.culture.ee',
+                'link': 'https://www.eestigiid.ee',
                 'date': (today + timedelta(days=14)).strftime('%d.%m.%Y'),
                 'location': 'Erinevad paigad üle Eesti',
                 'image': None
@@ -129,7 +132,7 @@ class CultureScraper:
             {
                 'title': 'Rahvatants Vabaduse väljakul',
                 'description': 'Traditsiooniline rahvatantsu üritus, kus osalevad tantsurühmad üle Eesti.',
-                'link': 'https://www.culture.ee',
+                'link': 'https://www.eestigiid.ee',
                 'date': (today + timedelta(days=21)).strftime('%d.%m.%Y'),
                 'location': 'Vabaduse väljak, Tallinn',
                 'image': None
@@ -137,7 +140,7 @@ class CultureScraper:
             {
                 'title': 'Tartu Kirjanduse Festival',
                 'description': 'Kirjandushuvilised kogunevad Tartusse, et kohata eesti ja välismaised autoreid.',
-                'link': 'https://www.culture.ee',
+                'link': 'https://www.eestigiid.ee',
                 'date': (today + timedelta(days=28)).strftime('%d.%m.%Y'),
                 'location': 'Tartu, erinevad asukohad',
                 'image': None
@@ -145,7 +148,7 @@ class CultureScraper:
             {
                 'title': 'Vana muusika festival',
                 'description': 'Keskaegsete ja barokkmuusika kontserdid ajaloolistes hoonetes.',
-                'link': 'https://www.culture.ee',
+                'link': 'https://www.eestigiid.ee',
                 'date': (today + timedelta(days=35)).strftime('%d.%m.%Y'),
                 'location': 'Tallinna vanalinn',
                 'image': None

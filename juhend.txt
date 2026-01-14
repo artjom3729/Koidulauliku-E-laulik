@@ -6,7 +6,7 @@ Projekti kirjeldus:
 -------------------
 Koidulauliku E-laulik on veebirakendus, mis kogub automaatselt 
 infot Eesti kultuuri kohta mitmest allikast (ERR.ee, Postimees.ee,
-Culture.ee, Wikipedia) ja esitab selle arusaadaval kujul.
+Eesti kultuurisündmused, Wikipedia) ja esitab selle arusaadaval kujul.
 
 ═══════════════════════════════════════════════════════════════
 1. NÕUTAV TARKVARA
@@ -115,7 +115,7 @@ Avalehel näete kolme peamist kategooriat:
 
 🎭 SÜNDMUSED
     - Kultuuriüritused, kontserdid, festivalid
-    - Allikas: Culture.ee
+    - Allikas: Eesti kultuurisündmused
     - Näitab kuupäeva ja asukohta
 
 📚 KULTUUR
@@ -172,7 +172,7 @@ Koidulauliku-E-laulik/
 │   ├── __init__.py
 │   ├── err_scraper.py        # ERR.ee uudised
 │   ├── postimees_scraper.py  # Postimees.ee uudised
-│   ├── culture_scraper.py    # Culture.ee sündmused
+│   ├── culture_scraper.py    # Eesti kultuurisündmused sündmused
 │   └── wikipedia_scraper.py  # Wikipedia kultuuriinfo
 │
 ├── templates/             # HTML mallid
@@ -203,7 +203,7 @@ Kasutatavad tehnoloogiad:
 Andmete allikad:
     • ERR.ee - Eesti Rahvusringhääling (uudised)
     • Postimees.ee - uudisteportaal (uudised)
-    • Culture.ee - kultuuriportaal (sündmused)
+    • Eesti kultuurisündmused - kultuuriportaal (sündmused)
     • Wikipedia - vaba entsüklopeedia (kultuuriinfo)
 
 Rakenduse omadused:
