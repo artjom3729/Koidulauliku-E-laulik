@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Uudised - Koidulauliku E-laulik{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>📰 Uudised</h1>
+    <p>Värskemad uudised Eesti kultuurielust</p>
+</div>
+
+{% if error %}
+<div class="alert alert-warning">
+    <p>Uudiste laadimisel tekkis viga. Näidatakse näidisandmeid.</p>
+</div>
+{% endif %}
+
+<div class="news-list">
+    {% if news %}
+        {% for item in news %}
+        <article class="news-item">
+            {% if item.image %}
+            <div class="news-image">
+                <img src="{{ item.image }}" alt="{{ item.title }}" onerror="this.style.display='none'">
+            </div>
+            {% endif %}
+            <div class="news-content">
+                <div class="news-meta">
+                    <span class="news-source">{{ item.source }}</span>
+                    <span class="news-date">{{ item.date }}</span>
+                </div>
+                <h2 class="news-title">
+                    <a href="{{ item.link }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
+                </h2>
+                {% if item.description %}
+                <p class="news-description">{{ item.description }}</p>
+                {% endif %}
+                <a href="{{ item.link }}" target="_blank" rel="noopener noreferrer" class="read-more">
+                    Loe edasi →
+                </a>
+            </div>
+        </article>
+        {% endfor %}
+    {% else %}
+        <div class="no-content">
+            <p>Uudiseid ei leitud. Proovi hiljem uuesti.</p>
+        </div>
+    {% endif %}
+</div>
+
+<div class="back-link">
+    <a href="/">← Tagasi avalehele</a>
+</div>
+{% endblock %}

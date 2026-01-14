@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Avaleht - Koidulauliku E-laulik{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Tere tulemast, Koidulauliku vaim! 🎵</h1>
+    <p class="hero-subtitle">Avastage kaasaegset Eesti kultuuri ühest kohast</p>
+</div>
+
+<div class="search-container">
+    <input type="text" id="search-input" class="search-input" placeholder="Otsi infot... (näiteks 'muusika', 'teater', 'kunst')">
+    <div id="search-results" class="search-results"></div>
+</div>
+
+<section class="categories">
+    <h2>Vali kategooria</h2>
+    <div class="category-grid">
+        <a href="/uudised" class="category-card">
+            <div class="category-icon">📰</div>
+            <h3>Uudised</h3>
+            <p>Värskemad uudised Eesti kultuurielust ja ühiskonnast</p>
+        </a>
+        
+        <a href="/syndmused" class="category-card">
+            <div class="category-icon">🎭</div>
+            <h3>Sündmused</h3>
+            <p>Kultuuriüritused, kontserdid ja festivaalid üle Eesti</p>
+        </a>
+        
+        <a href="/kultuur" class="category-card">
+            <div class="category-icon">📚</div>
+            <h3>Kultuur</h3>
+            <p>Teadmised Eesti kultuuri, kirjanduse ja kunsti kohta</p>
+        </a>
+    </div>
+</section>
+
+<section class="info-section">
+    <h2>Mis on E-laulik?</h2>
+    <p>
+        E-laulik on spetsiaalselt loodud Koidulauliku vaimule, et aidata tal kergesti orienteeruda 
+        kaasaegses Eestis. See rakendus kogub automaatselt infot mitmest allikast ja esitab selle 
+        arusaadaval ja mugaval kujul.
+    </p>
+    <p>
+        <strong>Allikad:</strong> ERR.ee, Postimees.ee, Culture.ee, Wikipedia
+    </p>
+</section>
+{% endblock %}

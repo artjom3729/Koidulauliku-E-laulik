@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Info - Koidulauliku E-laulik{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>ℹ️ Info rakenduse kohta</h1>
+</div>
+
+<div class="info-content">
+    <section class="info-section">
+        <h2>Mis on Koidulauliku E-laulik?</h2>
+        <p>
+            Koidulauliku E-laulik on veebirakendus, mis on loodud spetsiaalselt Koidulauliku vaimule, 
+            et aidata tal kergesti ja kiiresti tutvuda kaasaegse Eesti kultuurieluga. Rakendus kogub 
+            automaatselt infot mitmest usaldusväärsest allikast ja esitab selle arusaadaval ja 
+            kasutajasõbralikul kujul.
+        </p>
+    </section>
+
+    <section class="info-section">
+        <h2>Funktsionaalsus</h2>
+        <ul class="feature-list">
+            <li><strong>Uudised:</strong> Värskemad uudised Eesti kultuurist ERR.ee ja Postimees.ee portaalidest</li>
+            <li><strong>Sündmused:</strong> Kultuuriüritused, kontserdid ja festivaalid Culture.ee portaalist</li>
+            <li><strong>Kultuuriinfo:</strong> Põhjalik informatsioon Eesti kultuurist Wikipediast</li>
+            <li><strong>Otsing:</strong> Võimalus otsida infot kõigist kategooriatest</li>
+        </ul>
+    </section>
+
+    <section class="info-section">
+        <h2>Kasutatud allikad</h2>
+        <div class="sources-grid">
+            <div class="source-card">
+                <h3>ERR.ee</h3>
+                <p>Eesti Rahvusringhääling - uudised ja kultuuriinfo</p>
+                <a href="https://www.err.ee" target="_blank" rel="noopener noreferrer">Külasta →</a>
+            </div>
+            <div class="source-card">
+                <h3>Postimees.ee</h3>
+                <p>Üks Eesti suurimaid uudisteportaale</p>
+                <a href="https://www.postimees.ee" target="_blank" rel="noopener noreferrer">Külasta →</a>
+            </div>
+            <div class="source-card">
+                <h3>Culture.ee</h3>
+                <p>Eesti kultuuriportaal - sündmused ja üritused</p>
+                <a href="https://www.culture.ee" target="_blank" rel="noopener noreferrer">Külasta →</a>
+            </div>
+            <div class="source-card">
+                <h3>Wikipedia</h3>
+                <p>Vaba entsüklopeedia - Eesti kultuuri artiklid</p>
+                <a href="https://et.wikipedia.org" target="_blank" rel="noopener noreferrer">Külasta →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <h2>Tehnoloogiad</h2>
+        <p>
+            Rakendus on loodud kasutades järgmisi tehnoloogiaid:
+        </p>
+        <ul class="tech-list">
+            <li><strong>Flask</strong> - Python veebirakenduse raamistik</li>
+            <li><strong>BeautifulSoup4</strong> - HTML-i ja XML-i parsimine</li>
+            <li><strong>Requests</strong> - HTTP päringud</li>
+            <li><strong>HTML/CSS/JavaScript</strong> - Kasutajaliides</li>
+        </ul>
+    </section>
+
+    <section class="info-section">
+        <h2>Projekt</h2>
+        <p>
+            See rakendus on loodud ASI Karika 2026 koduvooru raames. Projekti eesmärk on luua 
+            kasutajasõbralik rakendus, mis aitab kiiresti leida ja avastada infot Eesti kultuuri kohta.
+        </p>
+    </section>
+
+    <section class="info-section">
+        <h2>Autoriõigused ja litsentsid</h2>
+        <p>
+            Kõik rakenduses kasutatud kood on autori enda loodud. Rakendus kasub avalikult kättesaadavaid 
+            allikaid (ERR.ee, Postimees.ee, Culture.ee, Wikipedia), mis on vabalt juurdepääsetavad.
+        </p>
+        <ul>
+            <li>Google Fonts (Roboto) - Apache License 2.0</li>
+            <li>Wikipedia sisu - Creative Commons Attribution-ShareAlike 3.0 Unported License</li>
+            <li>ERR.ee, Postimees.ee, Culture.ee - avalikud allikad, kasutatud ainult viited</li>
+        </ul>
+    </section>
+</div>
+
+<div class="back-link">
+    <a href="/">← Tagasi avalehele</a>
+</div>
+{% endblock %}
