@@ -1,1 +1,242 @@
+═══════════════════════════════════════════════════════════════
+KOIDULAULIKU E-LAULIK - RAKENDUSE KÄIVITAMISE JUHEND
+═══════════════════════════════════════════════════════════════
 
+Projekti kirjeldus:
+-------------------
+Koidulauliku E-laulik on veebirakendus, mis kogub automaatselt 
+infot Eesti kultuuri kohta mitmest allikast (ERR.ee, Postimees.ee,
+Eesti kultuurisündmused, Wikipedia) ja esitab selle arusaadaval kujul.
+
+═══════════════════════════════════════════════════════════════
+1. NÕUTAV TARKVARA
+═══════════════════════════════════════════════════════════════
+
+Enne projekti käivitamist veenduge, et teil on installitud:
+
+• Python 3.8 või uuem versioon
+  - Kontrollige: python3 --version
+  - Allalaadimine: https://www.python.org/downloads/
+
+• pip (Python package installer)
+  - Kontrollige: pip3 --version
+  - Tavaliselt kaasas Pythoniga
+
+═══════════════════════════════════════════════════════════════
+2. PROJEKTI SEADISTAMINE
+═══════════════════════════════════════════════════════════════
+
+SAMM 1: Projekti allalaadimine
+-------------------------------
+Git reposiitori kloonimine:
+    git clone https://github.com/artjom3729/Koidulauliku-E-laulik.git
+    cd Koidulauliku-E-laulik
+
+VÕI ZIP-failina allalaadimine ja lahtipakkimine.
+
+SAMM 2: Virtuaalse keskkonna loomine (soovitatav)
+--------------------------------------------------
+Windowsis:
+    python -m venv venv
+    venv\Scripts\activate
+
+Linuxis/macOS-is:
+    python3 -m venv venv
+    source venv/bin/activate
+
+SAMM 3: Sõltuvuste installimine
+--------------------------------
+Kui virtuaalne keskkond on aktiveeritud:
+    pip install -r requirements.txt
+
+Või ilma virtuaalse keskkonnata:
+    pip3 install -r requirements.txt
+
+Installitakse järgmised teegid:
+    • Flask - veebirakenduse raamistik
+    • beautifulsoup4 - HTML-i parsimine
+    • requests - HTTP päringud
+    • Werkzeug - Flask sõltuvus
+
+═══════════════════════════════════════════════════════════════
+3. RAKENDUSE KÄIVITAMINE
+═══════════════════════════════════════════════════════════════
+
+SAMM 1: Veenduge, et olete projekti kaustas
+--------------------------------------------
+    cd Koidulauliku-E-laulik
+    ls    (peaksite nägema app.py faili)
+
+SAMM 2: Käivitage Flask rakendus
+---------------------------------
+Windowsis:
+    python app.py
+
+Linuxis/macOS-is:
+    python3 app.py
+
+Peaks ilmuma väljund:
+    * Running on http://127.0.0.1:5000
+    * Running on http://0.0.0.0:5000
+
+SAMM 3: Avage veebibrauser
+---------------------------
+Minge aadressile:
+    http://localhost:5000
+
+VÕI:
+    http://127.0.0.1:5000
+
+MÄRKUS: Arendusrežiimi (debug mode) kasutamine
+-----------------------------------------------
+Kui soovite arendusrežiimi (automaatne taaskäivitus koodivigade 
+näitamine), seadke keskkonnamuutuja:
+
+Windowsis:
+    set FLASK_DEBUG=true
+    python app.py
+
+Linuxis/macOS-is:
+    export FLASK_DEBUG=true
+    python3 app.py
+
+HOIATUS: Ärge kasutage debug režiimi tootmiskeskkonnas!
+
+═══════════════════════════════════════════════════════════════
+4. RAKENDUSE KASUTAMINE
+═══════════════════════════════════════════════════════════════
+
+Avalehel näete kolme peamist kategooriat:
+
+📰 UUDISED
+    - Värskemad uudised Eesti kultuurist
+    - Allikad: ERR.ee, Postimees.ee
+    - Klikake artiklil, et lugeda täisteksti
+
+🎭 SÜNDMUSED
+    - Kultuuriüritused, kontserdid, festivalid
+    - Allikas: Eesti kultuurisündmused
+    - Näitab kuupäeva ja asukohta
+
+📚 KULTUUR
+    - Informatsioon Eesti kultuuri kohta
+    - Allikas: Wikipedia
+    - Artiklid kultuuri, kirjanduse, muusika jne kohta
+
+🔍 OTSING
+    - Sisestage otsingusõna avalehe otsingukasti
+    - Otsib läbi kõikide kategooriate
+
+═══════════════════════════════════════════════════════════════
+5. RAKENDUSE PEATAMINE
+═══════════════════════════════════════════════════════════════
+
+Rakenduse peatamiseks terminalis:
+    Ctrl + C (Windows/Linux/macOS)
+
+Virtuaalse keskkonna deaktiveerimine:
+    deactivate
+
+═══════════════════════════════════════════════════════════════
+6. VÕIMALIKUD PROBLEEMID JA LAHENDUSED
+═══════════════════════════════════════════════════════════════
+
+PROBLEEM: "python: command not found"
+LAHENDUS: Proovige python3 käsku või installige Python
+
+PROBLEEM: "ModuleNotFoundError: No module named 'flask'"
+LAHENDUS: Installige sõltuvused: pip install -r requirements.txt
+
+PROBLEEM: "Address already in use"
+LAHENDUS: Port 5000 on hõivatud. Muutke app.py failis port number
+         või peatage teine rakendus, mis kasutab porti 5000
+
+PROBLEEM: Uudised või sündmused ei laadi
+LAHENDUS: See on normaalne - rakendus kasutab näidisandmeid, kui
+         veebiallikad ei ole kättesaadavad või nende struktuur on
+         muutunud. Rakendus töötab siiski korrektselt.
+
+═══════════════════════════════════════════════════════════════
+7. PROJEKTI STRUKTUUR
+═══════════════════════════════════════════════════════════════
+
+Koidulauliku-E-laulik/
+│
+├── app.py                  # Põhirakendus (Flask)
+├── requirements.txt        # Python sõltuvused
+├── juhend.txt             # See juhend
+├── README.md              # Projekti kirjeldus
+├── AI_USAGE.txt           # AI kasutamise dokumentatsioon
+│
+├── scrapers/              # Andmete kogumise moodulid
+│   ├── __init__.py
+│   ├── err_scraper.py        # ERR.ee uudised
+│   ├── postimees_scraper.py  # Postimees.ee uudised
+│   ├── culture_scraper.py    # Eesti kultuurisündmused sündmused
+│   └── wikipedia_scraper.py  # Wikipedia kultuuriinfo
+│
+├── templates/             # HTML mallid
+│   ├── base.html             # Baas mall
+│   ├── index.html            # Avaleht
+│   ├── uudised.html          # Uudiste leht
+│   ├── syndmused.html        # Sündmuste leht
+│   ├── kultuur.html          # Kultuuri leht
+│   └── info.html             # Info leht
+│
+└── static/                # Staatilised failid
+    ├── css/
+    │   └── style.css         # Stiilileht
+    └── js/
+        └── main.js           # JavaScript
+
+═══════════════════════════════════════════════════════════════
+8. TEHNILISED DETAILID
+═══════════════════════════════════════════════════════════════
+
+Kasutatavad tehnoloogiad:
+    • Python 3.8+
+    • Flask 3.0.0 - veebirakenduse raamistik
+    • BeautifulSoup4 - HTML parsimine ja web scraping
+    • Requests - HTTP päringud
+    • HTML5, CSS3, JavaScript - frontend
+
+Andmete allikad:
+    • ERR.ee - Eesti Rahvusringhääling (uudised)
+    • Postimees.ee - uudisteportaal (uudised)
+    • Eesti kultuurisündmused - kultuuriportaal (sündmused)
+    • Wikipedia - vaba entsüklopeedia (kultuuriinfo)
+
+Rakenduse omadused:
+    • Automaatne andmete kogumine veebiallikatest
+    • Responsiivne disain (töötab nii arvutis kui mobiilis)
+    • Otsingufunktsioon kõigist kategooriatest
+    • Kasutajasõbralik liides
+    • Fallback näidisandmed, kui allikad ei ole kättesaadavad
+
+═══════════════════════════════════════════════════════════════
+9. AUTOR JA LITSENTS
+═══════════════════════════════════════════════════════════════
+
+Projekt: Koidulauliku E-laulik
+Loodud: ASI Karika 2026 koduvooru raames
+Autor: [Teie nimi]
+
+Litsentsid:
+    • Rakenduse kood: Autori enda loodud
+    • Google Fonts (Roboto): Apache License 2.0
+    • Wikipedia sisu: CC-BY-SA 3.0
+    • Veebiallikad: Kasutatud ainult avalikud viited
+
+═══════════════════════════════════════════════════════════════
+10. KONTAKT JA ABI
+═══════════════════════════════════════════════════════════════
+
+Küsimuste või probleemide korral:
+    • Kontrollige seda juhendit
+    • Vaadake README.md faili
+    • Kontrollige, et kõik sõltuvused on installitud
+    • Veenduge, et Python versioon on 3.8 või uuem
+
+═══════════════════════════════════════════════════════════════
+Edu rakenduse kasutamisel!
+═══════════════════════════════════════════════════════════════

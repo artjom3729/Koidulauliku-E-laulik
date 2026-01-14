@@ -1,1 +1,250 @@
+═══════════════════════════════════════════════════════════════
+AI KASUTAMISE DOKUMENTATSIOON - Koidulauliku E-laulik
+═══════════════════════════════════════════════════════════════
 
+See dokument kirjeldab AI tööriistade kasutamist projekti arendamisel
+vastavalt ASI Karika nõuetele.
+
+═══════════════════════════════════════════════════════════════
+KASUTATUD AI TÖÖRIISTAD
+═══════════════════════════════════════════════════════════════
+
+1. GitHub Copilot - koodilõikude automaatne täiendamine
+2. ChatGPT - projekti planeerimine ja probleemide lahendamine
+
+═══════════════════════════════════════════════════════════════
+AI KASUTAMISE JUHUD
+═══════════════════════════════════════════════════════════════
+
+-------------------------------------------------------------------
+1. PROJEKTI ARHITEKTUURI PLANEERIMINE
+-------------------------------------------------------------------
+
+Prompt:
+"Aita mul planeerida Flask veebirakendust, mis kogub andmeid 
+mitmest Eesti kultuuriallikast (ERR, Postimees, Eesti kultuurisündmused, 
+Wikipedia). Milline peaks olema projekti struktuur ja milliseid 
+tehnoloogiaid kasutada?"
+
+AI Vastus:
+- Soovitas kasutada Flask-i veebirakenduse raamistikuna
+- Pakkus välja BeautifulSoup4 HTML-i parsimiseks
+- Soovitas luua eraldi scraper moodulid igale allikale
+- Pakkus välja templates ja static kaustade struktuuri
+
+Kasutamine:
+Kasutasin seda projekti üldise struktuuri loomiseks ja tehnoloogiate
+valikuks. Lõin scrapers/ kausta eraldi moodulitega.
+
+-------------------------------------------------------------------
+2. FLASK RAKENDUSE PÕHILINE STRUKTUUR
+-------------------------------------------------------------------
+
+Prompt:
+"Näita mulle Flask rakenduse põhistruktuuri, kus on mitu route'i
+(avaleht, uudised, sündmused, kultuur) ja API endpoint otsinguks"
+
+AI Vastus (GitHub Copilot):
+Pakkus välja app.py põhistruktuuri route'idega:
+- @app.route('/') - avaleht
+- @app.route('/uudised') - uudiste leht
+- @app.route('/syndmused') - sündmuste leht
+- @app.route('/kultuur') - kultuuri leht
+- @app.route('/api/search') - otsingu API
+
+Kasutamine:
+Kasutasin seda app.py faili loomisel ja route'ide määramisel.
+Kohandasin API endpoint'i vastavalt vajadustele.
+
+-------------------------------------------------------------------
+3. WEB SCRAPING LOOGIKA
+-------------------------------------------------------------------
+
+Prompt:
+"Kuidas luua BeautifulSoup scraper, mis kogub uudiseid veebilehelt
+ja tagastab nimekirja sõnaraamatutega (title, description, link, 
+date, source)?"
+
+AI Vastus:
+Pakkus välja põhilise scraperiklassi struktuuri:
+- __init__ meetod base_url ja headers-iga
+- get_news meetod, mis teeb HTTP päringu
+- BeautifulSoup HTML parsimine
+- Try-except vigade käsitluseks
+- Fallback sample data, kui scraping ebaõnnestub
+
+Kasutamine:
+Kasutasin seda kõigis scraper failides (err_scraper.py,
+postimees_scraper.py, culture_scraper.py, wikipedia_scraper.py).
+Lisasin oma näidisandmed ja kohandasin HTML elementide otsimist.
+
+-------------------------------------------------------------------
+4. HTML TEMPLATE'IDE STRUKTUUR
+-------------------------------------------------------------------
+
+Prompt:
+"Näita mulle Jinja2 base.html template'i, mis sisaldab navbar'i,
+footer'it ja content block'i"
+
+AI Vastus (GitHub Copilot):
+Pakkus välja base.html struktuuri:
+- <!DOCTYPE html> deklaratsioon
+- <head> sektsioon CSS linkidega
+- <nav> navigatsioonilatt
+- <main> sisu plokk {% block content %}
+- <footer> jalus
+- JavaScript linkimine
+
+Kasutamine:
+Kasutasin seda base.html loomisel. Lisasin oma disaini elemendid,
+navigatsiooni menüü ja footer'i sisu.
+
+-------------------------------------------------------------------
+5. CSS STIILIDE LOOMINE
+-------------------------------------------------------------------
+
+Prompt:
+"Aita mul luua kaasaegne, responsiivne CSS, mis kasutab Eesti
+lipuvärvide põhjal värvipaletti (sinine, must, valge) ja on
+kasutajasõbralik"
+
+AI Vastus:
+Soovitas CSS custom properties (CSS variables) kasutamist:
+- --primary-color, --secondary-color jne
+- Flexbox ja Grid layoutide kasutamist
+- Media queries mobile-responsive disaini jaoks
+- Box-shadow ja transition efektide lisamist
+- Kaartide (card) põhist disaini
+
+Kasutamine:
+Kasutasin seda style.css loomisel. Kohandasin värvipaletti
+(sinine #0055A4, hele sinine #00A3E0, kuldne #FFD700) ja lisasin
+oma stiilid kategooriatele, uudiste lehele, sündmuste lehele jne.
+
+-------------------------------------------------------------------
+6. JAVASCRIPT OTSINGU FUNKTSIOON
+-------------------------------------------------------------------
+
+Prompt:
+"Kuidas teha JavaScript-is debounced search, mis otsib API-st
+ja näitab tulemusi dropdown'is?"
+
+AI Vastus (GitHub Copilot):
+Pakkus välja:
+- addEventListener('input') search input'ile
+- setTimeout debounce jaoks
+- fetch() API päringu tegemiseks
+- DOM manipulation tulemuste kuvamiseks
+- Click outside sulgemise loogika
+
+Kasutamine:
+Kasutasin seda main.js failis otsingu funktsionaalsuse loomisel.
+Lisasin tulemuste kuvamise HTML struktuuri ja klikiga avamise.
+
+-------------------------------------------------------------------
+7. WIKIPEDIA API KASUTAMINE
+-------------------------------------------------------------------
+
+Prompt:
+"Kuidas kasutada Wikipedia API-t, et saada Eesti kultuuri
+artiklite kokkuvõtted?"
+
+AI Vastus:
+Selgitas Wikipedia API action=query kasutamist:
+- prop=extracts|info kokkuvõtte saamiseks
+- exintro=True ainult intro lõigu jaoks
+- explaintext=True tekstilise väljundi jaoks
+- format=json JSON vastuse saamiseks
+
+Kasutamine:
+Kasutasin seda wikipedia_scraper.py failis get_culture_info()
+meetodis. Lõin nimekirja kultuuriteemadest ja kasutasin API-t
+igale teemale.
+
+-------------------------------------------------------------------
+8. ERROR HANDLING JA FALLBACK DATA
+-------------------------------------------------------------------
+
+Prompt:
+"Kuidas teha robust error handling web scraping'u puhul, et 
+rakendus töötaks ka siis, kui veebiallikad pole kättesaadavad?"
+
+AI Vastus:
+Soovitas:
+- Try-except blokke kõigis scraper meetodites
+- Fallback näidisandmete meetodid (_get_sample_news jne)
+- requests.get() timeout parameetri kasutamist
+- Graceful degradation - näita vähemalt näidisandmeid
+
+Kasutamine:
+Implementeerisin kõigis scraper failides try-except plokid ja
+lõin _get_sample_* meetodid, mis tagastavad näidisandmed, kui
+päris allikad pole kättesaadavad. See tagab, et rakendus töötab
+alati, isegi ilma internetiühenduseta või kui veebilehed on muutnud
+oma struktuuri.
+
+-------------------------------------------------------------------
+9. REQUIREMENTS.TXT LOOMINE
+-------------------------------------------------------------------
+
+Prompt:
+"Milliseid Python teeke ma vajan Flask veebirakendusele, mis teeb
+web scraping'ut BeautifulSoup'iga?"
+
+AI Vastus:
+Soovitas järgmisi teeke:
+- Flask - veebirakenduse raamistik
+- beautifulsoup4 - HTML parsimine
+- requests - HTTP päringud
+- Werkzeug - Flask sõltuvus
+
+Kasutamine:
+Lõin requirements.txt faili nende teekide konkreetsete
+versioonidega: Flask==3.0.0, beautifulsoup4==4.12.2,
+requests==2.31.0, Werkzeug==3.0.1
+
+-------------------------------------------------------------------
+10. RESPONSIVE DESIGN
+-------------------------------------------------------------------
+
+Prompt:
+"Kuidas teha CSS-is responsive design, mis töötab nii desktopis
+kui mobiilis?"
+
+AI Vastus (GitHub Copilot):
+Soovitas:
+- @media queries erinevate ekraani suuruste jaoks
+- Flexbox flex-direction: column mobile'is
+- Grid grid-template-columns muutmine väiksematel ekraanidel
+- Meta viewport tag HTML head'is
+- Font-size'ide kohandamine
+
+Kasutamine:
+Lisasin style.css faili @media (max-width: 768px) ja
+@media (max-width: 480px) reeglid. Muutsin layout'e stackitud
+versiooniks mobile'is ja vähendasin fonte.
+
+═══════════════════════════════════════════════════════════════
+KOKKUVÕTE
+═══════════════════════════════════════════════════════════════
+
+AI tööriistad (GitHub Copilot ja ChatGPT) aitasid projektil:
+
+✓ Planeerida projekti struktuuri ja tehnoloogiaid
+✓ Luua Flask rakenduse põhistruktuuri
+✓ Implementeerida web scraping loogika
+✓ Disainida HTML template'id ja CSS stiilid
+✓ Teha JavaScript otsingu funktsioon
+✓ Käsitleda vigu ja luua fallback andmeid
+✓ Teha rakendus responsive ja kasutajasõbralik
+
+Kõik AI poolt genereeritud kood on läbi vaadatud, kohandatud ja
+testitud. AI-d kasutati peamiselt kiirema arenduse ja parimate
+tavade õppimise jaoks.
+
+Lõplik rakendus on täielikult funktsionaalne ja vastab ASI Karika
+ülesande nõuetele.
+
+═══════════════════════════════════════════════════════════════
+LÕPP
+═══════════════════════════════════════════════════════════════

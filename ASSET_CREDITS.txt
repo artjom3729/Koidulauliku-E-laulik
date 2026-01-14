@@ -1,0 +1,179 @@
+═══════════════════════════════════════════════════════════════
+AUTORIÕIGUSED JA KASUTATUD MATERJALID
+═══════════════════════════════════════════════════════════════
+
+Koidulauliku E-laulik projekt
+
+═══════════════════════════════════════════════════════════════
+KOOD
+═══════════════════════════════════════════════════════════════
+
+Asukoht: Kogu projekti kood (app.py, scrapers/, templates/, static/)
+Autor: Projekti autor (ise loodud)
+Litsents: Loodud ASI Karika 2026 koduvooru raames
+Kirjeldus: Kogu Pythoni, HTML, CSS ja JavaScript kood on autori enda
+           kirjutatud ja loodud selle projekti jaoks.
+
+═══════════════════════════════════════════════════════════════
+FONTID
+═══════════════════════════════════════════════════════════════
+
+Font: Roboto
+Asukoht: Laaditud Google Fonts'ist (templates/base.html)
+Autor: Christian Robertson (Google)
+Link: https://fonts.google.com/specimen/Roboto
+Litsents: Apache License 2.0
+Kasutamine: Kasutatakse kogu rakenduse teksti kuvamiseks
+
+═══════════════════════════════════════════════════════════════
+PYTHON TEEGID
+═══════════════════════════════════════════════════════════════
+
+1. Flask
+   Versioon: 3.0.0
+   Autor: Pallets
+   Link: https://flask.palletsprojects.com/
+   Litsents: BSD-3-Clause License
+   Kasutamine: Veebirakenduse raamistik
+
+2. BeautifulSoup4
+   Versioon: 4.12.2
+   Autor: Leonard Richardson
+   Link: https://www.crummy.com/software/BeautifulSoup/
+   Litsents: MIT License
+   Kasutamine: HTML ja XML parsimiseks web scraping'u jaoks
+
+3. Requests
+   Versioon: 2.31.0
+   Autor: Kenneth Reitz
+   Link: https://requests.readthedocs.io/
+   Litsents: Apache License 2.0
+   Kasutamine: HTTP päringute tegemiseks
+
+4. Werkzeug
+   Versioon: 3.0.1
+   Autor: Pallets
+   Link: https://werkzeug.palletsprojects.com/
+   Litsents: BSD-3-Clause License
+   Kasutamine: Flask sõltuvus, WSGI utiliidid
+
+═══════════════════════════════════════════════════════════════
+ANDMEALLIKAD
+═══════════════════════════════════════════════════════════════
+
+1. ERR.ee (Eesti Rahvusringhääling)
+   Link: https://www.err.ee
+   Autor: Eesti Rahvusringhääling
+   Kasutamine: Uudiste kogumine
+   Märkus: Kasutatud ainult avalikud viited artiklitele,
+           rakendus ei kopeeri sisu, vaid viitab originaalile
+
+2. Postimees.ee
+   Link: https://www.postimees.ee
+   Autor: Postimees
+   Kasutamine: Uudiste kogumine
+   Märkus: Kasutatud ainult avalikud viited artiklitele,
+           rakendus ei kopeeri sisu, vaid viitab originaalile
+
+3. Eesti kultuurisündmused
+   Link: https://www.eestigiid.ee
+   Autor: Eesti kultuuriportaal
+   Kasutamine: Kultuurisündmuste kogumine
+   Märkus: Kasutatud ainult avalikud viited sündmustele,
+           rakendus ei kopeeri sisu, vaid viitab originaalile
+
+4. Wikipedia (Eesti keelne)
+   Link: https://et.wikipedia.org
+   Autor: Wikimedia Foundation ja ühiskond
+   Litsents: Creative Commons Attribution-ShareAlike 3.0 Unported
+   Kasutamine: Eesti kultuuri artiklite kokkuvõtete kogumine
+   Märkus: Wikipedia API kaudu kogutud kokkuvõtted koos viidetega
+           originaalartiklitele
+
+═══════════════════════════════════════════════════════════════
+IKOONID JA EMOJI
+═══════════════════════════════════════════════════════════════
+
+Asukoht: HTML failides (templates/)
+Tüüp: Unicode emoji
+Näited: 🎵 📰 🎭 📚 🔍 📅 📍 ℹ️ ❤️
+Litsents: Unicode Consortium - vabalt kasutatav
+Kasutamine: Kasutajaliidese dekoratiivseteks elementideks
+
+═══════════════════════════════════════════════════════════════
+VÄRVISKEEM
+═══════════════════════════════════════════════════════════════
+
+Põhivärvid (CSS muutujad):
+- Sinine #0055A4: Inspireeritud Eesti lipust
+- Hele sinine #00A3E0: Kaasaegne aktsent
+- Kuldne #FFD700: Aktsendi värv
+- Taust #f8f9fa: Standardne neutraalne taust
+- Valge #ffffff: Standardne taustavärv
+
+Märkus: Värvid valitud autori poolt vastavalt projekti teemale
+        ja Eesti kultuurilistele sümbolitele
+
+═══════════════════════════════════════════════════════════════
+CSS RAAMISTIKUD JA LIBRARY'D
+═══════════════════════════════════════════════════════════════
+
+Märkus: Projektis ei kasutata väliseid CSS raamistikke (Bootstrap,
+        Tailwind jne). Kogu CSS on kirjutatud nullist autori poolt.
+
+═══════════════════════════════════════════════════════════════
+JAVASCRIPT LIBRARY'D
+═══════════════════════════════════════════════════════════════
+
+Märkus: Projektis ei kasutata väliseid JavaScript raamistikke
+        (jQuery, React jne). Kogu JavaScript on vanilla JS,
+        kirjutatud autori poolt.
+
+═══════════════════════════════════════════════════════════════
+PILDID
+═══════════════════════════════════════════════════════════════
+
+Märkus: Rakendus ei sisalda staatilist pildimaterjali.
+        Pildid (kui neid kuvatakse) pärinevad veebiallikatest
+        (ERR.ee, Postimees.ee, Eesti kultuurisündmused) ja on viited
+        originaalidele nende serverites.
+
+═══════════════════════════════════════════════════════════════
+KOKKUVÕTE
+═══════════════════════════════════════════════════════════════
+
+Kõik projektis kasutatud materjalid on:
+
+1. ✓ Autori enda loodud (kõik kood ja disain)
+2. ✓ Vabalt kasutatavad avatud lähtekoodiga teegid (MIT, Apache, BSD)
+3. ✓ Vabalt kasutatavad Google Fonts (Apache License)
+4. ✓ Avalikud viited veebiallikatele (ei kopeerita sisu)
+5. ✓ Wikipedia sisu Creative Commons litsentsi all (viidatud)
+
+Projekt ei sisalda autoriõigustega kaitstud materjale, mis ei ole
+vabalt kasutatavad või mille kasutamine ei ole lubatud.
+
+Märkus: Eesti kultuurisündmused, ERR.ee ja Postimees.ee on kasutatud ainult 
+        viitamiseks. Rakendus ei kopeeri nende sisu, vaid viitab
+        originaalartiklitele nende veebilehtedel.
+
+═══════════════════════════════════════════════════════════════
+LITSENTSITEAVE
+═══════════════════════════════════════════════════════════════
+
+See projekt on loodud hariduslikel eesmärkidel ASI Karika 2026
+koduvooru raames.
+
+Projekt ise ei ole avaldatud konkreetse litsentsi all, kuid kõik
+kasutatud komponendid järgivad oma litsentse (vt ülal).
+
+═══════════════════════════════════════════════════════════════
+KONTAKT
+═══════════════════════════════════════════════════════════════
+
+Küsimuste või selgituste korral autoriõiguste kohta võtke
+ühendust projekti autoriga läbi GitHub repositooriumi.
+
+═══════════════════════════════════════════════════════════════
+Viimati uuendatud: 2026-01-14
+═══════════════════════════════════════════════════════════════

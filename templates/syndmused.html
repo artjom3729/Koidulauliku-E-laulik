@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Sündmused - Koidulauliku E-laulik{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>🎭 Kultuurisündmused</h1>
+    <p>Üritused, kontserdid ja festivaalid üle Eesti</p>
+</div>
+
+{% if error %}
+<div class="alert alert-warning">
+    <p>Sündmuste laadimisel tekkis viga. Näidatakse näidisandmeid.</p>
+</div>
+{% endif %}
+
+<div class="events-grid">
+    {% if events %}
+        {% for event in events %}
+        <article class="event-card">
+            {% if event.image %}
+            <div class="event-image">
+                <img src="{{ event.image }}" alt="{{ event.title }}" onerror="this.style.display='none'">
+            </div>
+            {% endif %}
+            <div class="event-content">
+                <h2 class="event-title">
+                    <a href="{{ event.link }}" target="_blank" rel="noopener noreferrer">{{ event.title }}</a>
+                </h2>
+                <div class="event-meta">
+                    <div class="event-date">📅 {{ event.date }}</div>
+                    <div class="event-location">📍 {{ event.location }}</div>
+                </div>
+                {% if event.description %}
+                <p class="event-description">{{ event.description }}</p>
+                {% endif %}
+                <a href="{{ event.link }}" target="_blank" rel="noopener noreferrer" class="event-link">
+                    Vaata lähemalt →
+                </a>
+            </div>
+        </article>
+        {% endfor %}
+    {% else %}
+        <div class="no-content">
+            <p>Sündmuseid ei leitud. Proovi hiljem uuesti.</p>
+        </div>
+    {% endif %}
+</div>
+
+<div class="back-link">
+    <a href="/">← Tagasi avalehele</a>
+</div>
+{% endblock %}
