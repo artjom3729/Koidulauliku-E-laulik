@@ -87,6 +87,21 @@ Minge aadressile:
 VÕI:
     http://127.0.0.1:5000
 
+MÄRKUS: Arendusrežiimi (debug mode) kasutamine
+-----------------------------------------------
+Kui soovite arendusrežiimi (automaatne taaskäivitus koodivigade 
+näitamine), seadke keskkonnamuutuja:
+
+Windowsis:
+    set FLASK_DEBUG=true
+    python app.py
+
+Linuxis/macOS-is:
+    export FLASK_DEBUG=true
+    python3 app.py
+
+HOIATUS: Ärge kasutage debug režiimi tootmiskeskkonnas!
+
 ═══════════════════════════════════════════════════════════════
 4. RAKENDUSE KASUTAMINE
 ═══════════════════════════════════════════════════════════════
