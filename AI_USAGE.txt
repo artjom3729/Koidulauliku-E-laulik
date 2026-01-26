@@ -480,6 +480,20 @@ töötavad korrektselt. Scrapy 2.11.2 sisaldab kõiki turvalisuse
 parandusi ja lisab defusedxml sõltuvuse XML-i turvaliseks
 töötlemiseks.
 
+MÄRKUS: Scrapy versioonides 0.7 kuni 2.14.1 (sh 2.11.2) on üks
+teadaolev DoS (Denial of Service) turvaprobleem, millele ei ole
+veel parandust saadaval. Risk on madal, kuna:
+1. Rakendus ei ole avalikult kättesaadav scraping teenus
+2. Scrapy kasutatakse ainult kontrollitud allikate jaoks
+3. AutoThrottle ja DOWNLOAD_DELAY piiravad päringute arvu
+4. Fallback data tagab, et rakendus töötab ka scraping'u ebaõnnestumisel
+
+Leevendused (mitigations):
+- AutoThrottle seaded piiravad päringute kiirust
+- CONCURRENT_REQUESTS piiratud 8-le
+- Timeout'id kõigis scraper'ites (10 sekundit)
+- Fallback andmed tagavad teenuse jätkusuutlikkuse
+
 ═══════════════════════════════════════════════════════════════
 UUENDATUD KOKKUVÕTE
 ═══════════════════════════════════════════════════════════════

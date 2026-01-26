@@ -138,6 +138,12 @@ See projekt on loodud hariduslikel eesmärkidel ASI Karika 2026 koduvooru raames
 
 AI (GitHub Copilot, ChatGPT) kasutamine on dokumenteeritud failis `AI_USAGE.txt`.
 
+## 🔒 Turvalisus
+
+Projekti turvalisuse kohta ja teadaolevate probleemide kohta vaata `SECURITY.md` faili.
+
+**Oluline märkus:** Scrapy 2.11.2 sisaldab ühte teadaolevat DoS haavatavust, millele ei ole veel parandust. Risk on madal ja leevendused on rakendatud. Vaata detaile `SECURITY.md` failist.
+
 ## 📞 Kontakt
 
 Küsimuste või probleemide korral:
