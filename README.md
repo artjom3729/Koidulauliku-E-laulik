@@ -18,17 +18,21 @@ Koidulauliku E-laulik on veebirakendus, mis on loodud spetsiaalselt Koidulauliku
 
 Rakendus kogub andmeid järgmistest allikatest:
 
-1. **ERR.ee** - Eesti Rahvusringhääling (uudised ja kultuuriinfo)
+1. **ERR Kultuur (kultuur.err.ee)** - Eesti Rahvusringhääling (kultuuriuudised ja artiklid)
 2. **Postimees.ee** - Üks Eesti suurimaid uudisteportaale
-3. **Eesti kultuurisündmused** - Eesti kultuuriportaal (sündmused ja üritused)
-4. **Wikipedia** - Vaba entsüklopeedia (Eesti kultuuri artiklid)
+3. **Kultuurikava (kultuurikava.ee/events/)** - Kultuuriürituste portaal
+4. **Piletilevi (piletilevi.ee)** - Piletimüügi portaal (kultuuriüritused koos piltidega)
+5. **Eesti kultuurisündmused** - Eesti kultuuriportaal (sündmused ja üritused)
+6. **Wikipedia (et.wikipedia.org)** - Vaba entsüklopeedia (Eesti kultuuri artiklid)
 
-## 🛠️ Tehnoloogiad
+## 🛠️ Teknoloogiad
 
 - **Python 3.8+** - Programmeerimiskeel
 - **Flask 3.0.0** - Veebirakenduse raamistik
 - **BeautifulSoup4** - HTML-i ja XML-i parsimine
+- **Scrapy 2.11.0** - Struktureeritud web scraping raamistik
 - **Requests** - HTTP päringud
+- **lxml** - XML/HTML töötlemine
 - **HTML/CSS/JavaScript** - Kasutajaliides
 
 ## 🚀 Kiirstart
@@ -80,10 +84,19 @@ Koidulauliku-E-laulik/
 │
 ├── scrapers/                 # Andmete kogumise moodulid
 │   ├── __init__.py
-│   ├── err_scraper.py           # ERR.ee uudiste scraper
+│   ├── err_scraper.py           # ERR Kultuur uudiste scraper (BeautifulSoup)
 │   ├── postimees_scraper.py     # Postimees.ee uudiste scraper
 │   ├── culture_scraper.py       # Eesti kultuurisündmused sündmuste scraper
-│   └── wikipedia_scraper.py     # Wikipedia kultuuriinfo scraper
+│   ├── kultuurikava_scraper.py  # Kultuurikava.ee sündmuste scraper
+│   ├── piletilevi_scraper.py    # Piletilevi.ee sündmuste scraper (pildid)
+│   ├── wikipedia_scraper.py     # Wikipedia kultuuriinfo scraper
+│   ├── scrapy_settings.py       # Scrapy konfiguratsioon
+│   ├── pipelines.py             # Scrapy andmete töötlemise pipeline
+│   └── spiders/                 # Scrapy spider'id
+│       ├── __init__.py
+│       ├── err_spider.py        # ERR Kultuur Scrapy spider
+│       ├── kultuurikava_spider.py  # Kultuurikava Scrapy spider
+│       └── piletilevi_spider.py    # Piletilevi Scrapy spider
 │
 ├── templates/                # HTML mallid
 │   ├── base.html                # Baas mall
@@ -138,7 +151,9 @@ See projekt on loodud ASI Karika koduvooru ülesande raames. Projekti eesmärk o
 
 ### Hindamiskriteeriumid
 
-- ✅ **Informatsiooni rohkus**: 4 erinevat allikat (ERR, Postimees, Eesti kultuurisündmused, Wikipedia)
+- ✅ **Informatsiooni rohkus**: 6 erinevat allikat (ERR Kultuur, Postimees, Kultuurikava, Piletilevi, Eesti kultuurisündmused, Wikipedia)
+- ✅ **Web scraping tehnoloogiad**: BeautifulSoup ja Scrapy kasutamine
+- ✅ **Pildid kultuuriüritustest**: Piltide kogumine Piletilevi ja teistest allikatest
 - ✅ **Informatsiooni õigsus**: Usaldusväärsed allikad, automaatne andmete kogumine
 - ✅ **Kasutajakogemus**: Lihtne ja loogiline kasutada, selge navigatsioon
 - ✅ **Loomingulisus**: Responsiivne disain, otsingu funktsioon, fallback andmed
