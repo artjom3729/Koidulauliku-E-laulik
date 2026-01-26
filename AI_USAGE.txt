@@ -446,10 +446,39 @@ Soovitas:
 
 Kasutamine:
 Lisasin requirements.txt faili:
-- Scrapy==2.11.0
+- Scrapy==2.11.2 (uuendatud 2.11.0-st turvaaugu parandamiseks)
 - lxml==4.9.3
 
 Need võimaldavad nii BeautifulSoup kui Scrapy kasutamist.
+
+-------------------------------------------------------------------
+20. SCRAPY TURVAAUGUD JA PARANDAMINE
+-------------------------------------------------------------------
+
+Prompt:
+"Scrapy 2.11.0 versioonil on mitu turvaauku (authorization header
+leakage, decompression bomb, ReDoS). Milline on õige parandatud
+versioon?"
+
+AI Vastus:
+Selgitas turvaauke:
+- Authorization header leakage (CVE): päised lekivad cross-domain
+  redirect'ides
+- Decompression bomb: võimaldab DoS rünnakuid
+- ReDoS XMLFeedSpider'is: regulaaravaldise DoS
+- Patched versions: 2.11.1 ja 2.11.2
+
+Soovitas:
+- Uuendada Scrapy==2.11.2 (kõik parandused)
+- defusedxml lisatakse automaatselt (XML turvalisus)
+- Testida, et kõik scrapers töötavad peale uuendust
+
+Kasutamine:
+Uuendasin requirements.txt faili Scrapy==2.11.0 -> Scrapy==2.11.2.
+Installisin uue versiooni ja testisin kõiki scraper'eid - kõik
+töötavad korrektselt. Scrapy 2.11.2 sisaldab kõiki turvalisuse
+parandusi ja lisab defusedxml sõltuvuse XML-i turvaliseks
+töötlemiseks.
 
 ═══════════════════════════════════════════════════════════════
 UUENDATUD KOKKUVÕTE

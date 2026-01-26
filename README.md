@@ -30,7 +30,7 @@ Rakendus kogub andmeid järgmistest allikatest:
 - **Python 3.8+** - Programmeerimiskeel
 - **Flask 3.0.0** - Veebirakenduse raamistik
 - **BeautifulSoup4** - HTML-i ja XML-i parsimine
-- **Scrapy 2.11.0** - Struktureeritud web scraping raamistik
+- **Scrapy 2.11.2** - Struktureeritud web scraping raamistik (turvaline versioon)
 - **Requests** - HTTP päringud
 - **lxml** - XML/HTML töötlemine
 - **HTML/CSS/JavaScript** - Kasutajaliides
