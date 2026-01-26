@@ -10,6 +10,8 @@ from scrapers.err_scraper import ERRNewsScraper
 from scrapers.postimees_scraper import PostimeesScraper
 from scrapers.culture_scraper import CultureScraper
 from scrapers.wikipedia_scraper import WikipediaScraper
+from scrapers.kultuurikava_scraper import KultuurikavaScraper
+from scrapers.piletilevi_scraper import PiletileviScraper
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'koidulaulik-secret-key-2026'
@@ -19,6 +21,8 @@ err_scraper = ERRNewsScraper()
 postimees_scraper = PostimeesScraper()
 culture_scraper = CultureScraper()
 wiki_scraper = WikipediaScraper()
+kultuurikava_scraper = KultuurikavaScraper()
+piletilevi_scraper = PiletileviScraper()
 
 @app.route('/')
 def index():
@@ -45,8 +49,15 @@ def uudised():
 def syndmused():
     """Events page - cultural events in Estonia"""
     try:
-        events = culture_scraper.get_events(limit=10)
-        return render_template('syndmused.html', events=events)
+        # Aggregate events from multiple sources
+        culture_events = culture_scraper.get_events(limit=5)
+        kultuurikava_events = kultuurikava_scraper.get_events(limit=5)
+        piletilevi_events = piletilevi_scraper.get_cultural_events(limit=5)
+        
+        # Combine all events
+        all_events = culture_events + kultuurikava_events + piletilevi_events
+        
+        return render_template('syndmused.html', events=all_events)
     except Exception as e:
         print(f"Error fetching events: {e}")
         return render_template('syndmused.html', events=[], error=str(e))
@@ -81,7 +92,10 @@ def search():
                     results.append(item)
         
         if category in ['all', 'syndmused']:
-            events = culture_scraper.get_events(limit=50)
+            culture_events = culture_scraper.get_events(limit=20)
+            kultuurikava_events = kultuurikava_scraper.get_events(limit=20)
+            piletilevi_events = piletilevi_scraper.get_cultural_events(limit=20)
+            events = culture_events + kultuurikava_events + piletilevi_events
             for item in events:
                 if query in item.get('title', '').lower() or query in item.get('description', '').lower():
                     item['category'] = 'Sündmused'

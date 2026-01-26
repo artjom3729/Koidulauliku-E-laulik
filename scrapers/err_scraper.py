@@ -12,7 +12,7 @@ class ERRNewsScraper:
     """Scraper for ERR.ee news portal"""
     
     def __init__(self):
-        self.base_url = "https://www.err.ee"
+        self.base_url = "https://kultuur.err.ee"
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         }
@@ -26,7 +26,7 @@ class ERRNewsScraper:
         
         try:
             # Try to fetch from ERR kultuur section
-            url = f"{self.base_url}/kultuur"
+            url = self.base_url
             response = requests.get(url, headers=self.headers, timeout=10)
             response.raise_for_status()
             
@@ -97,27 +97,27 @@ class ERRNewsScraper:
         """Return sample news data when scraping fails"""
         return [
             {
-                'title': 'Eesti kultuurielu uudised',
+                'title': 'Eesti kultuurielo uudised',
                 'description': 'Värskeid uudiseid Eesti kultuurist ja ühiskonnast.',
-                'link': 'https://www.err.ee/kultuur',
+                'link': 'https://kultuur.err.ee',
                 'date': datetime.now().strftime('%Y-%m-%d'),
-                'source': 'ERR',
+                'source': 'ERR Kultuur',
                 'image': None
             },
             {
                 'title': 'Uus näitus Eesti kunstimuuseumis',
                 'description': 'Eesti Kunstimuuseum avab uue näituse, mis keskendub kaasaegsele kunstile.',
-                'link': 'https://www.err.ee/kultuur',
+                'link': 'https://kultuur.err.ee',
                 'date': datetime.now().strftime('%Y-%m-%d'),
-                'source': 'ERR',
+                'source': 'ERR Kultuur',
                 'image': None
             },
             {
                 'title': 'Kontsert Tallinnas tähistab rahvuslikku päeva',
                 'description': 'Suur kontsert toimub Tallinnas, et tähistada olulist rahvuslikku sündmust.',
-                'link': 'https://www.err.ee/kultuur',
+                'link': 'https://kultuur.err.ee',
                 'date': datetime.now().strftime('%Y-%m-%d'),
-                'source': 'ERR',
+                'source': 'ERR Kultuur',
                 'image': None
             }
         ]

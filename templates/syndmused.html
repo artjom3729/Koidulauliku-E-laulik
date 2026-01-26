@@ -30,6 +30,9 @@
                 <div class="event-meta">
                     <div class="event-date">📅 {{ event.date }}</div>
                     <div class="event-location">📍 {{ event.location }}</div>
+                    {% if event.source %}
+                    <div class="event-source">🔖 {{ event.source }}</div>
+                    {% endif %}
                 </div>
                 {% if event.description %}
                 <p class="event-description">{{ event.description }}</p>
