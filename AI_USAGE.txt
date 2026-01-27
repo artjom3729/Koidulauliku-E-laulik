@@ -246,5 +246,283 @@ Lõplik rakendus on täielikult funktsionaalne ja vastab ASI Karika
 ülesande nõuetele.
 
 ═══════════════════════════════════════════════════════════════
+TÄIENDAVAD ARENDUSED (2026-01-26)
+═══════════════════════════════════════════════════════════════
+
+-------------------------------------------------------------------
+11. WEB SCRAPING TÄIENDAMINE UUTE ALLIKATEGA
+-------------------------------------------------------------------
+
+Prompt:
+"Aita mul implementeerida täiendavad web scraping moodulid kolmele
+uuele kultuuriallikale: https://kultuur.err.ee/, 
+https://www.kultuurikava.ee/events/ ja https://www.piletilevi.ee/.
+Kasuta nii BeautifulSoup kui Scrapy raamistikku. Fookus peaks
+olema piltide kogumisel hiljutistest kultuuriüritustest."
+
+AI Vastus (GitHub Copilot):
+- Soovitas lisada Scrapy requirements.txt faili
+- Pakkus välja scrapers/spiders/ kausta struktuuri
+- Näitas, kuidas luua Scrapy spider'eid igale allikale
+- Soovitas luua pipeline'i andmete töötlemiseks
+- Pakkus välja pildi ekstraktimise meetodid
+
+Kasutamine:
+Lõin kolm uut scraper moodulit:
+1. kultuurikava_scraper.py - BeautifulSoup-põhine scraper
+2. piletilevi_scraper.py - BeautifulSoup-põhine scraper
+3. Scrapy spiders (err_spider.py, kultuurikava_spider.py, 
+   piletilevi_spider.py)
+
+-------------------------------------------------------------------
+12. ERR KULTUURI ALLIKA UUENDAMINE
+-------------------------------------------------------------------
+
+Prompt:
+"Kuidas muuta ERR scraper'it, et see kasutaks https://kultuur.err.ee/
+asemel vana https://www.err.ee/kultuur?"
+
+AI Vastus:
+Näitas, kuidas muuta base_url ja URL-i moodustamise loogikat:
+- Muuta self.base_url = "https://kultuur.err.ee"
+- Eemaldada /kultuur suffix URL-i moodustamisest
+- Uuendada sample data lingid
+
+Kasutamine:
+Uuendasin err_scraper.py faili, et kasutada uut kultuur.err.ee
+domeeni. Muutsin ka source nime "ERR" -> "ERR Kultuur" selguse
+huvides.
+
+-------------------------------------------------------------------
+13. KULTUURIKAVA SCRAPER LOOMINE
+-------------------------------------------------------------------
+
+Prompt:
+"Näita mulle, kuidas luua BeautifulSoup scraper, mis kogub
+kultuuriüritusi kultuurikava.ee/events/ lehelt. Pea meeles
+piltide kogumist."
+
+AI Vastus:
+Pakkus välja:
+- Klassi struktuuri events_url-iga
+- get_events() meetodi mitme CSS selektoriga
+- _extract_image() meetodi, mis toetab src, data-src, data-lazy-src
+- Fallback näidisandmete meetodi kultuuriüritustega
+- Try-except vigade käsitluseks
+
+Kasutamine:
+Lõin kultuurikava_scraper.py faili. Lisasin laiendatud pildi
+ekstraktimise loogika ja 5 näidissündmust fallback andmetena.
+Scraper otsib sündmuste kaarti (event-card, event-item jne).
+
+-------------------------------------------------------------------
+14. PILETILEVI SCRAPER PILTIDE KOGUMISEGA
+-------------------------------------------------------------------
+
+Prompt:
+"Kuidas teha scraper piletilevi.ee jaoks, mis keskendub eriti
+piltide kogumisele kultuuriüritustest? Näita ka background-image
+ekstraktimist."
+
+AI Vastus:
+Soovitas:
+- Lisada kategooria väli 'kultuur'
+- Kasutada mitut meetodit piltide leidmiseks
+- Regulaaravaldist background-image ekstraktimiseks
+- Filtreerida välja data: URIs ja placeholder pildid
+
+Kasutamine:
+Lõin piletilevi_scraper.py faili täiendatud pildi ekstraktimise
+võimalustega. Scraper otsib pilte img src, data-src, data-lazy-src
+ja background-image atribuutidest. Lisasin 6 näidissündmust.
+
+-------------------------------------------------------------------
+15. SCRAPY SPIDERS STRUKTUURNE SCRAPING
+-------------------------------------------------------------------
+
+Prompt:
+"Näita mulle, kuidas luua Scrapy spider'eid struktureeritud
+andmete kogumiseks. Vaja on spider'eid ERR kultuuri, Kultuurikava
+ja Piletilevi jaoks."
+
+AI Vastus (ChatGPT):
+Selgitas Scrapy spider'ite struktuuri:
+- Spider klass scrapy.Spider-ist pärinedes
+- name, allowed_domains, start_urls atribuudid
+- custom_settings USER_AGENT, ROBOTSTXT_OBEY jne
+- parse() meetod response töötlemiseks
+- CSS selectorid elementide leidmiseks
+- Helper meetodid teksti ja linkide ekstraktimiseks
+
+Kasutamine:
+Lõin kolm Scrapy spider'it spiders/ kausta:
+- err_spider.py - struktureeritud scraping kultuur.err.ee jaoks
+- kultuurikava_spider.py - events scraping
+- piletilevi_spider.py - events + images scraping
+
+Iga spider järgib robots.txt reegleid ja kasutab 1 sekundi
+delay'td requests'ide vahel.
+
+-------------------------------------------------------------------
+16. SCRAPY SETTINGS JA PIPELINES
+-------------------------------------------------------------------
+
+Prompt:
+"Kuidas konfigureerida Scrapy settings ja pipeline kultuuriürituste
+andmete töötlemiseks?"
+
+AI Vastus:
+Pakkus välja:
+- scrapy_settings.py faili põhiliste seadetega
+- ROBOTSTXT_OBEY = True
+- DOWNLOAD_DELAY = 1
+- AUTOTHROTTLE seaded
+- HTTPCACHE seaded
+- Pipeline klassi CulturalEventsPipeline
+
+Kasutamine:
+Lõin scrapy_settings.py ja pipelines.py failid. Pipeline
+puhastab ja valideerib scraped items:
+- Trimmib title ja description
+- Tagab date ja location väärtused
+- Säilitab scraped items nimekirjas
+
+-------------------------------------------------------------------
+17. APP.PY INTEGREERIMINE UUTE SCRAPERITEGA
+-------------------------------------------------------------------
+
+Prompt:
+"Kuidas integreerida uued scraperid (kultuurikava ja piletilevi)
+Flask rakendusega nii, et sündmused tuleksid mitmest allikast?"
+
+AI Vastus (GitHub Copilot):
+Näitas:
+- Uute scraperite importimist
+- Scraper instantside loomist
+- /syndmused route'i uuendamist, et kombineerida mitme
+  allika sündmused
+- API search endpoint'i uuendamist
+
+Kasutamine:
+Uuendasin app.py faili:
+- Lisasin kultuurikava_scraper ja piletilevi_scraper impordi
+- Initsialiseersin uued scraperid
+- Muutsin syndmused() route'i koguma sündmusi kolmest allikast
+  (5 igaühest, kokku 15)
+- Uuendasin search API-t kasutama kõiki allikaid
+
+-------------------------------------------------------------------
+18. TEMPLATE'I UUENDAMINE PILTIDE KUVAMISEKS
+-------------------------------------------------------------------
+
+Prompt:
+"Kuidas uuendada syndmused.html template'i, et see näitaks pilte
+ja sündmuste allikat paremini?"
+
+AI Vastus:
+Soovitas:
+- event.source kuvamist event-meta sektsioonis
+- onerror atribuuti piltidele, mis ei laadi
+- Emoji ikoonide kasutamist (🔖 source jaoks)
+
+Kasutamine:
+Uuendasin syndmused.html template'i:
+- Lisasin event.source kuvamise event-meta sektsiooni
+- Template juba toetas event.image kuvamist
+- Lisasin 🔖 emoji source jaoks
+
+-------------------------------------------------------------------
+19. REQUIREMENTS.TXT UUENDAMINE
+-------------------------------------------------------------------
+
+Prompt:
+"Millised on õiged Scrapy ja lxml versioonid, mis töötavad
+Flask 3.0.0 ja Python 3.8+ ga?"
+
+AI Vastus:
+Soovitas:
+- Scrapy==2.11.0 (stabiilne, uusim versioon)
+- lxml==4.9.3 (Scrapy sõltuvus HTML/XML parsimiseks)
+
+Kasutamine:
+Lisasin requirements.txt faili:
+- Scrapy==2.11.2 (uuendatud 2.11.0-st turvaaugu parandamiseks)
+- lxml==4.9.3
+
+Need võimaldavad nii BeautifulSoup kui Scrapy kasutamist.
+
+-------------------------------------------------------------------
+20. SCRAPY TURVAAUGUD JA PARANDAMINE
+-------------------------------------------------------------------
+
+Prompt:
+"Scrapy 2.11.0 versioonil on mitu turvaauku (authorization header
+leakage, decompression bomb, ReDoS). Milline on õige parandatud
+versioon?"
+
+AI Vastus:
+Selgitas turvaauke:
+- Authorization header leakage (CVE): päised lekivad cross-domain
+  redirect'ides
+- Decompression bomb: võimaldab DoS rünnakuid
+- ReDoS XMLFeedSpider'is: regulaaravaldise DoS
+- Patched versions: 2.11.1 ja 2.11.2
+
+Soovitas:
+- Uuendada Scrapy==2.11.2 (kõik parandused)
+- defusedxml lisatakse automaatselt (XML turvalisus)
+- Testida, et kõik scrapers töötavad peale uuendust
+
+Kasutamine:
+Uuendasin requirements.txt faili Scrapy==2.11.0 -> Scrapy==2.11.2.
+Installisin uue versiooni ja testisin kõiki scraper'eid - kõik
+töötavad korrektselt. Scrapy 2.11.2 sisaldab kõiki turvalisuse
+parandusi ja lisab defusedxml sõltuvuse XML-i turvaliseks
+töötlemiseks.
+
+MÄRKUS: Scrapy versioonides 0.7 kuni 2.14.1 (sh 2.11.2) on üks
+teadaolev DoS (Denial of Service) turvaprobleem, millele ei ole
+veel parandust saadaval. Risk on madal, kuna:
+1. Rakendus ei ole avalikult kättesaadav scraping teenus
+2. Scrapy kasutatakse ainult kontrollitud allikate jaoks
+3. AutoThrottle ja DOWNLOAD_DELAY piiravad päringute arvu
+4. Fallback data tagab, et rakendus töötab ka scraping'u ebaõnnestumisel
+
+Leevendused (mitigations):
+- AutoThrottle seaded piiravad päringute kiirust
+- CONCURRENT_REQUESTS piiratud 8-le
+- Timeout'id kõigis scraper'ites (10 sekundit)
+- Fallback andmed tagavad teenuse jätkusuutlikkuse
+
+═══════════════════════════════════════════════════════════════
+UUENDATUD KOKKUVÕTE
+═══════════════════════════════════════════════════════════════
+
+AI tööriistad (GitHub Copilot ja ChatGPT) aitasid lisafunktionaalsuse
+implementeerimisel:
+
+✓ Uuendada ERR scraper'it kasutama https://kultuur.err.ee/
+✓ Luua kultuurikava.ee events scraper
+✓ Luua piletilevi.ee scraper piltide kogumisega
+✓ Implementeerida Scrapy spider'eid struktureeritud scrapingu jaoks
+✓ Konfigureerida Scrapy settings ja pipeline'id
+✓ Integreerida kõik uued scraperid Flask rakendusega
+✓ Uuendada template'e piltide ja allikate kuvamiseks
+
+Rakendus kasutab nüüd 6 erinevat allikat:
+1. ERR Kultuur (https://kultuur.err.ee/)
+2. Postimees
+3. Eesti kultuurisündmused
+4. Kultuurikava (https://www.kultuurikava.ee/events/)
+5. Piletilevi (https://www.piletilevi.ee/)
+6. Wikipedia
+
+Kasutatakse nii BeautifulSoup kui Scrapy raamistikke, nagu nõuti.
+Fookus on piltide kogumisel hiljutistest kultuuriüritustest.
+
+Kõik AI poolt genereeritud kood on läbi vaadatud, kohandatud ja
+valmis testimiseks.
+
+═══════════════════════════════════════════════════════════════
 LÕPP
 ═══════════════════════════════════════════════════════════════
