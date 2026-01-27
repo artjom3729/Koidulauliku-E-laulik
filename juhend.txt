@@ -5,8 +5,8 @@ KOIDULAULIKU E-LAULIK - RAKENDUSE KÄIVITAMISE JUHEND
 Projekti kirjeldus:
 -------------------
 Koidulauliku E-laulik on veebirakendus, mis kogub automaatselt 
-infot Eesti kultuuri kohta mitmest allikast (ERR.ee, Postimees.ee,
-Eesti kultuurisündmused, Wikipedia) ja esitab selle arusaadaval kujul.
+infot Eesti kultuuri kohta mitmest allikast (ERR Kultuur,
+Kultuurikava, Piletilevi, Wikipedia) ja esitab selle arusaadaval kujul.
 
 ═══════════════════════════════════════════════════════════════
 1. NÕUTAV TARKVARA
@@ -57,6 +57,8 @@ Installitakse järgmised teegid:
     • beautifulsoup4 - HTML-i parsimine
     • requests - HTTP päringud
     • Werkzeug - Flask sõltuvus
+    • Scrapy - struktureeritud scraping
+    • lxml - HTML/XML töötlemine
 
 ═══════════════════════════════════════════════════════════════
 3. RAKENDUSE KÄIVITAMINE
@@ -110,13 +112,17 @@ Avalehel näete kolme peamist kategooriat:
 
 📰 UUDISED
     - Värskemad uudised Eesti kultuurist
-    - Allikad: ERR.ee, Postimees.ee
+    - Allikas: ERR Kultuur
     - Klikake artiklil, et lugeda täisteksti
 
 🎭 SÜNDMUSED
     - Kultuuriüritused, kontserdid, festivalid
-    - Allikas: Eesti kultuurisündmused
+    - Allikad: Kultuurikava, Piletilevi
     - Näitab kuupäeva ja asukohta
+
+📷 GALERII
+    - Visuaalne ülevaade kultuurisündmustest
+    - Näitab pilte, allikaid ja kuupäevi
 
 📚 KULTUUR
     - Informatsioon Eesti kultuuri kohta
@@ -170,9 +176,9 @@ Koidulauliku-E-laulik/
 │
 ├── scrapers/              # Andmete kogumise moodulid
 │   ├── __init__.py
-│   ├── err_scraper.py        # ERR.ee uudised
-│   ├── postimees_scraper.py  # Postimees.ee uudised
-│   ├── culture_scraper.py    # Eesti kultuurisündmused sündmused
+│   ├── err_scraper.py        # ERR Kultuuri uudised
+│   ├── kultuurikava_scraper.py # Kultuurikava sündmused
+│   ├── piletilevi_scraper.py # Piletilevi sündmused
 │   └── wikipedia_scraper.py  # Wikipedia kultuuriinfo
 │
 ├── templates/             # HTML mallid
@@ -201,9 +207,9 @@ Kasutatavad tehnoloogiad:
     • HTML5, CSS3, JavaScript - frontend
 
 Andmete allikad:
-    • ERR.ee - Eesti Rahvusringhääling (uudised)
-    • Postimees.ee - uudisteportaal (uudised)
-    • Eesti kultuurisündmused - kultuuriportaal (sündmused)
+    • ERR Kultuur - Eesti Rahvusringhääling (uudised)
+    • Kultuurikava - kultuuriportaal (sündmused)
+    • Piletilevi - sündmuste portaal (pildid ja üritused)
     • Wikipedia - vaba entsüklopeedia (kultuuriinfo)
 
 Rakenduse omadused:

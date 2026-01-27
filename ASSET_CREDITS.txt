@@ -25,6 +25,13 @@ Link: https://fonts.google.com/specimen/Roboto
 Litsents: Apache License 2.0
 Kasutamine: Kasutatakse kogu rakenduse teksti kuvamiseks
 
+Font: Playfair Display
+Asukoht: Laaditud Google Fonts'ist (templates/base.html)
+Autor: Claus Eggers Sørensen
+Link: https://fonts.google.com/specimen/Playfair+Display
+Litsents: Open Font License (OFL)
+Kasutamine: Pealkirjade ja poeetilise meeleolu jaoks
+
 ═══════════════════════════════════════════════════════════════
 PYTHON TEEGID
 ═══════════════════════════════════════════════════════════════
@@ -61,24 +68,24 @@ PYTHON TEEGID
 ANDMEALLIKAD
 ═══════════════════════════════════════════════════════════════
 
-1. ERR.ee (Eesti Rahvusringhääling)
-   Link: https://www.err.ee
+1. ERR Kultuur (Eesti Rahvusringhääling)
+   Link: https://kultuur.err.ee
    Autor: Eesti Rahvusringhääling
    Kasutamine: Uudiste kogumine
    Märkus: Kasutatud ainult avalikud viited artiklitele,
            rakendus ei kopeeri sisu, vaid viitab originaalile
 
-2. Postimees.ee
-   Link: https://www.postimees.ee
-   Autor: Postimees
-   Kasutamine: Uudiste kogumine
-   Märkus: Kasutatud ainult avalikud viited artiklitele,
+2. Kultuurikava.ee
+   Link: https://www.kultuurikava.ee/events/
+   Autor: Kultuurikava
+   Kasutamine: Kultuurisündmuste kogumine
+   Märkus: Kasutatud ainult avalikud viited sündmustele,
            rakendus ei kopeeri sisu, vaid viitab originaalile
 
-3. Eesti kultuurisündmused
-   Link: https://www.eestigiid.ee
-   Autor: Eesti kultuuriportaal
-   Kasutamine: Kultuurisündmuste kogumine
+3. Piletilevi.ee
+   Link: https://www.piletilevi.ee
+   Autor: Piletilevi
+   Kasutamine: Kultuuriürituste kogumine ja pildid
    Märkus: Kasutatud ainult avalikud viited sündmustele,
            rakendus ei kopeeri sisu, vaid viitab originaalile
 
@@ -135,7 +142,7 @@ PILDID
 
 Märkus: Rakendus ei sisalda staatilist pildimaterjali.
         Pildid (kui neid kuvatakse) pärinevad veebiallikatest
-        (ERR.ee, Postimees.ee, Eesti kultuurisündmused) ja on viited
+        (ERR Kultuur, Kultuurikava, Piletilevi) ja on viited
         originaalidele nende serverites.
 
 ═══════════════════════════════════════════════════════════════
@@ -153,7 +160,7 @@ Kõik projektis kasutatud materjalid on:
 Projekt ei sisalda autoriõigustega kaitstud materjale, mis ei ole
 vabalt kasutatavad või mille kasutamine ei ole lubatud.
 
-Märkus: Eesti kultuurisündmused, ERR.ee ja Postimees.ee on kasutatud ainult 
+Märkus: Kultuurikava, ERR Kultuur ja Piletilevi on kasutatud ainult 
         viitamiseks. Rakendus ei kopeeri nende sisu, vaid viitab
         originaalartiklitele nende veebilehtedel.
 
@@ -175,5 +182,5 @@ Küsimuste või selgituste korral autoriõiguste kohta võtke
 ühendust projekti autoriga läbi GitHub repositooriumi.
 
 ═══════════════════════════════════════════════════════════════
-Viimati uuendatud: 2026-01-14
+Viimati uuendatud: 2026-01-27
 ═══════════════════════════════════════════════════════════════

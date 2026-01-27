@@ -116,7 +116,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', function() {
-    const animatedElements = document.querySelectorAll('.news-item, .event-card, .culture-item, .category-card');
+    const animatedElements = document.querySelectorAll('.news-item, .event-card, .culture-item, .category-card, .gallery-card');
     
     animatedElements.forEach(el => {
         el.style.opacity = '0';
