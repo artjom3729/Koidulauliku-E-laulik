@@ -117,11 +117,32 @@ const observer = new IntersectionObserver((entries) => {
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', function() {
     const animatedElements = document.querySelectorAll('.news-item, .event-card, .culture-item, .category-card, .gallery-card');
+    const fallbackSvg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="640" height="420">
+            <rect width="640" height="420" fill="#f8f1e5"/>
+            <rect x="60" y="80" width="520" height="260" rx="20" fill="#0055A4" opacity="0.85"/>
+            <text x="50%" y="52%" font-size="30" text-anchor="middle" fill="#ffffff" font-family="Roboto, Arial">Pilt puudub</text>
+            <text x="50%" y="67%" font-size="18" text-anchor="middle" fill="#ffffff" font-family="Roboto, Arial">Ajalooline vaade</text>
+        </svg>
+    `;
+    const fallbackImage = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(fallbackSvg)}`;
     
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
         observer.observe(el);
+    });
+
+    const galleryImages = document.querySelectorAll('.gallery-image img');
+    galleryImages.forEach(img => {
+        img.addEventListener('error', () => {
+            if (img.dataset.fallbackApplied) {
+                return;
+            }
+            img.dataset.fallbackApplied = 'true';
+            img.src = fallbackImage;
+            img.alt = 'Pilt puudub';
+        });
     });
 });

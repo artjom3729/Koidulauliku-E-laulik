@@ -11,6 +11,7 @@
     --primary-color: #0055A4;
     --secondary-color: #00A3E0;
     --accent-color: #FFD700;
+    --deep-blue: #0c2340;
     --text-color: #333;
     --text-light: #666;
     --bg-color: #f8f9fa;
@@ -93,7 +94,7 @@ h1, h2, h3 {
 .hero {
     text-align: center;
     padding: 3rem 1rem;
-    background: linear-gradient(135deg, #0c2340, var(--primary-color));
+    background: linear-gradient(135deg, var(--deep-blue), var(--primary-color));
     color: var(--white);
     border-radius: 12px;
     margin-bottom: 2rem;

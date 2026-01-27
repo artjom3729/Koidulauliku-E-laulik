@@ -5,7 +5,7 @@
 {% block content %}
 <div class="page-header">
     <h1>📷 Kultuuripildid</h1>
-    <p>Hetkepildid Eesti kultuurisündmustest ja rahvuslikest hetkest</p>
+    <p>Hetkepildid Eesti kultuurisündmustest ja rahvuslikest hetkedest</p>
 </div>
 
 {% if error %}
@@ -19,7 +19,7 @@
         {% for item in gallery_items %}
         <article class="gallery-card">
             <div class="gallery-image">
-                <img src="{{ item.image }}" alt="{{ item.title }}" onerror="this.style.display='none'">
+                <img src="{{ item.image }}" alt="{{ item.title }}">
             </div>
             <div class="gallery-content">
                 <h2 class="gallery-title">{{ item.title }}</h2>

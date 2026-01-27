@@ -5,6 +5,8 @@ A web application for Koidulaulik's spirit to explore modern Estonian culture
 
 from flask import Flask, render_template, request, jsonify
 from datetime import datetime
+from itertools import chain
+from urllib.parse import quote
 import os
 from scrapers.err_scraper import ERRNewsScraper
 from scrapers.wikipedia_scraper import WikipediaScraper
@@ -102,14 +104,14 @@ def search():
 def galerii():
     """Photo gallery page - recent images from cultural events"""
     try:
-        kultuurikava_events = kultuurikava_scraper.get_events(limit=8)
-        piletilevi_events = piletilevi_scraper.get_cultural_events(limit=8)
+        kultuurikava_events = kultuurikava_scraper.get_events(limit=12)
+        piletilevi_events = piletilevi_scraper.get_cultural_events(limit=12)
         gallery_items = [
-            item for item in (kultuurikava_events + piletilevi_events)
+            item for item in chain(kultuurikava_events, piletilevi_events)
             if item.get('image')
         ]
 
-        if not gallery_items:
+        if len(gallery_items) < 3:
             gallery_items = _get_gallery_fallback()
 
         return render_template('galerii.html', gallery_items=gallery_items)
@@ -124,34 +126,82 @@ def info():
 
 def _get_gallery_fallback():
     """Fallback gallery items when event images are unavailable"""
+    def build_placeholder(config):
+        svg = (
+            "<svg xmlns='http://www.w3.org/2000/svg' width='640' height='420'>"
+            "<defs><linearGradient id='g' x1='0' x2='1'>"
+            f"<stop offset='0' stop-color='{config['gradient_start']}'/>"
+            f"<stop offset='1' stop-color='{config['gradient_end']}'/>"
+            "</linearGradient></defs>"
+            "<rect width='640' height='420' fill='url(#g)'/>"
+            f"{config['accent_shape']}"
+            f"<text x='50%' y='55%' font-size='32' text-anchor='middle' fill='{config['text_color']}' "
+            "font-family='Playfair Display, Roboto, Arial'>"
+            f"{config['title']}</text>"
+            f"<text x='50%' y='70%' font-size='20' text-anchor='middle' fill='{config['text_color']}' "
+            "font-family='Roboto, Arial'>"
+            f"{config['subtitle']}</text>"
+            "</svg>"
+        )
+        return f"data:image/svg+xml;charset=UTF-8,{quote(svg)}"
+
     return [
         {
             'title': 'Laulupeo õhtuvalgus',
             'date': datetime.now().strftime('%d.%m.%Y'),
             'location': 'Tallinn',
             'source': 'Koidulauliku E-laulik',
-            'image': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc2NDAnIGhlaWdodD0nNDIwJz48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9J2cxJyB4MT0nMCcgeDI9JzEnPjxzdG9wIG9mZnNldD0nMCcgc3RvcC1jb2xvcj0nIzAwNTVBNCcvPjxzdG9wIG9mZnNldD0nMScgc3RvcC1jb2xvcj0nIzAwQTNFMCcvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSc2NDAnIGhlaWdodD0nNDIwJyBmaWxsPSd1cmwoI2cxKScvPjxjaXJjbGUgY3g9JzEyMCcgY3k9JzEyMCcgcj0nNjAnIGZpbGw9JyNGRkQ3MDAnLz48dGV4dCB4PSc1MCUnIHk9JzU1JScgZm9udC1zaXplPSczNicgdGV4dC1hbmNob3I9J21pZGRsZScgZmlsbD0nI2ZmZmZmZicgZm9udC1mYW1pbHk9J1JvYm90bywgQXJpYWwnPkxhdWx1cGlkdTwvdGV4dD48dGV4dCB4PSc1MCUnIHk9JzcwJScgZm9udC1zaXplPScyMCcgdGV4dC1hbmNob3I9J21pZGRsZScgZmlsbD0nI2ZmZmZmZicgZm9udC1mYW1pbHk9J1JvYm90bywgQXJpYWwnPkt1bHR1dXJpaGV0azwvdGV4dD48L3N2Zz4='
+            'image': build_placeholder({
+                'title': 'Laulupidu',
+                'subtitle': 'Kultuurihetk',
+                'gradient_start': '#0055A4',
+                'gradient_end': '#00A3E0',
+                'accent_shape': "<circle cx='120' cy='120' r='60' fill='#FFD700'/>",
+                'text_color': '#ffffff'
+            })
         },
         {
             'title': 'Tantsuõhtu rahvamajas',
             'date': datetime.now().strftime('%d.%m.%Y'),
             'location': 'Tartu',
             'source': 'Koidulauliku E-laulik',
-            'image': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc2NDAnIGhlaWdodD0nNDIwJz48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9J2cyJyB4MT0nMCcgeDI9JzEnPjxzdG9wIG9mZnNldD0nMCcgc3RvcC1jb2xvcj0nI2Y4ZjFlNScvPjxzdG9wIG9mZnNldD0nMScgc3RvcC1jb2xvcj0nI2YwZDlhMScvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSc2NDAnIGhlaWdodD0nNDIwJyBmaWxsPSd1cmwoI2cyKScvPjxyZWN0IHg9JzYwJyB5PSc3MCcgd2lkdGg9JzUyMCcgaGVpZ2h0PScyODAnIHJ4PScyNCcgZmlsbD0nIzAwNTVBNCcgb3BhY2l0eT0nMC44NScvPjx0ZXh0IHg9JzUwJScgeT0nNTIlJyBmb250LXNpemU9JzMyJyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBmaWxsPScjZmZmZmZmJyBmb250LWZhbWlseT0nUm9ib3RvLCBBcmlhbCc+UmFodmF0YW50czwvdGV4dD48dGV4dCB4PSc1MCUnIHk9JzY3JScgZm9udC1zaXplPScyMCcgdGV4dC1hbmNob3I9J21pZGRsZScgZmlsbD0nI2ZmZmZmZicgZm9udC1mYW1pbHk9J1JvYm90bywgQXJpYWwnPkVsYXYgdHJhZGl0c2lvb248L3RleHQ+PC9zdmc='
+            'image': build_placeholder({
+                'title': 'Rahvatants',
+                'subtitle': 'Elav traditsioon',
+                'gradient_start': '#f8f1e5',
+                'gradient_end': '#f0d9a1',
+                'accent_shape': "<rect x='60' y='70' width='520' height='280' rx='24' fill='#0055A4' opacity='0.85'/>",
+                'text_color': '#ffffff'
+            })
         },
         {
             'title': 'Teatriõhtu vanalinnas',
             'date': datetime.now().strftime('%d.%m.%Y'),
             'location': 'Pärnu',
             'source': 'Koidulauliku E-laulik',
-            'image': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc2NDAnIGhlaWdodD0nNDIwJz48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9J2czJyB4MT0nMCcgeDI9JzEnPjxzdG9wIG9mZnNldD0nMCcgc3RvcC1jb2xvcj0nIzJiMmIyYicvPjxzdG9wIG9mZnNldD0nMScgc3RvcC1jb2xvcj0nIzRhNGE0YScvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSc2NDAnIGhlaWdodD0nNDIwJyBmaWxsPSd1cmwoI2czKScvPjxyZWN0IHg9JzkwJyB5PSc4MCcgd2lkdGg9JzQ2MCcgaGVpZ2h0PScyNjAnIHJ4PScxOCcgZmlsbD0nI0ZGRDcwMCcgb3BhY2l0eT0nMC44Jy8+PHRleHQgeD0nNTAlJyB5PSc1NCUnIGZvbnQtc2l6ZT0nMzInIHRleHQtYW5jaG9yPSdtaWRkbGUnIGZpbGw9JyMyYjJiMmInIGZvbnQtZmFtaWx5PSdSb2JvdG8sIEFyaWFsJz5UZWF0ZXI8L3RleHQ+PHRleHQgeD0nNTAlJyB5PSc2OSUnIGZvbnQtc2l6ZT0nMjAnIHRleHQtYW5jaG9yPSdtaWRkbGUnIGZpbGw9JyMyYjJiMmInIGZvbnQtZmFtaWx5PSdSb2JvdG8sIEFyaWFsJz5MYXZha3Vuc3Q8L3RleHQ+PC9zdmc='
+            'image': build_placeholder({
+                'title': 'Teater',
+                'subtitle': 'Lavakunst',
+                'gradient_start': '#2b2b2b',
+                'gradient_end': '#4a4a4a',
+                'accent_shape': "<rect x='90' y='80' width='460' height='260' rx='18' fill='#FFD700' opacity='0.8'/>",
+                'text_color': '#2b2b2b'
+            })
         },
         {
             'title': 'Kontserdipäev rannal',
             'date': datetime.now().strftime('%d.%m.%Y'),
             'location': 'Haapsalu',
             'source': 'Koidulauliku E-laulik',
-            'image': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc2NDAnIGhlaWdodD0nNDIwJz48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9J2c0JyB4MT0nMCcgeDI9JzEnPjxzdG9wIG9mZnNldD0nMCcgc3RvcC1jb2xvcj0nIzJmNmY0ZScvPjxzdG9wIG9mZnNldD0nMScgc3RvcC1jb2xvcj0nIzdmYmY3ZicvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSc2NDAnIGhlaWdodD0nNDIwJyBmaWxsPSd1cmwoI2c0KScvPjxjaXJjbGUgY3g9JzUyMCcgY3k9JzEyMCcgcj0nNzAnIGZpbGw9JyNGRkQ3MDAnLz48cmVjdCB4PSc4MCcgeT0nMjIwJyB3aWR0aD0nNDgwJyBoZWlnaHQ9JzEyMCcgcng9JzIwJyBmaWxsPScjZmZmZmZmJyBvcGFjaXR5PScwLjg1Jy8+PHRleHQgeD0nNTAlJyB5PSc1OCUnIGZvbnQtc2l6ZT0nMzAnIHRleHQtYW5jaG9yPSdtaWRkbGUnIGZpbGw9JyMyZjZmNGUnIGZvbnQtZmFtaWx5PSdSb2JvdG8sIEFyaWFsJz5Lb250c2VydDwvdGV4dD48dGV4dCB4PSc1MCUnIHk9JzcyJScgZm9udC1zaXplPScyMCcgdGV4dC1hbmNob3I9J21pZGRsZScgZmlsbD0nIzJmNmY0ZScgZm9udC1mYW1pbHk9J1JvYm90bywgQXJpYWwnPlN1dmXDtWh0dTwvdGV4dD48L3N2Zz4='
+            'image': build_placeholder({
+                'title': 'Kontsert',
+                'subtitle': 'Suveõhtu',
+                'gradient_start': '#2f6f4e',
+                'gradient_end': '#7fbf7f',
+                'accent_shape': "<circle cx='520' cy='120' r='70' fill='#FFD700'/>"
+                "<rect x='80' y='220' width='480' height='120' rx='20' fill='#ffffff' opacity='0.85'/>",
+                'text_color': '#2f6f4e'
+            })
         }
     ]
 
