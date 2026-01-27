@@ -8,8 +8,9 @@ Koidulauliku E-laulik on veebirakendus, mis on loodud spetsiaalselt Koidulauliku
 
 ## ✨ Funktsionaalsus
 
-- **📰 Uudised**: Värskemad uudised Eesti kultuurist ERR.ee ja Postimees.ee portaalidest
-- **🎭 Sündmused**: Kultuuriüritused, kontserdid ja festivaalid Eesti kultuurisündmused portaalist
+- **📰 Uudised**: Värskemad uudised Eesti kultuurist ERR Kultuuri portaalist
+- **🎭 Sündmused**: Kultuuriüritused, kontserdid ja festivaalid Kultuurikava ja Piletilevi portaalidest
+- **📷 Galerii**: Visuaalne ülevaade viimastest kultuurisündmustest
 - **📚 Kultuuriinfo**: Põhjalik informatsioon Eesti kultuurist Wikipediast
 - **🔍 Otsing**: Võimalus otsida infot kõigist kategooriatest
 - **📱 Responsiivne**: Töötab nii arvutis kui mobiilseadmes
@@ -19,11 +20,9 @@ Koidulauliku E-laulik on veebirakendus, mis on loodud spetsiaalselt Koidulauliku
 Rakendus kogub andmeid järgmistest allikatest:
 
 1. **ERR Kultuur (kultuur.err.ee)** - Eesti Rahvusringhääling (kultuuriuudised ja artiklid)
-2. **Postimees.ee** - Üks Eesti suurimaid uudisteportaale
-3. **Kultuurikava (kultuurikava.ee/events/)** - Kultuuriürituste portaal
-4. **Piletilevi (piletilevi.ee)** - Piletimüügi portaal (kultuuriüritused koos piltidega)
-5. **Eesti kultuurisündmused** - Eesti kultuuriportaal (sündmused ja üritused)
-6. **Wikipedia (et.wikipedia.org)** - Vaba entsüklopeedia (Eesti kultuuri artiklid)
+2. **Kultuurikava (kultuurikava.ee/events/)** - Kultuuriürituste portaal
+3. **Piletilevi (piletilevi.ee)** - Piletimüügi portaal (kultuuriüritused koos piltidega)
+4. **Wikipedia (et.wikipedia.org)** - Vaba entsüklopeedia (Eesti kultuuri artiklid)
 
 ## 🛠️ Teknoloogiad
 
@@ -85,8 +84,6 @@ Koidulauliku-E-laulik/
 ├── scrapers/                 # Andmete kogumise moodulid
 │   ├── __init__.py
 │   ├── err_scraper.py           # ERR Kultuur uudiste scraper (BeautifulSoup)
-│   ├── postimees_scraper.py     # Postimees.ee uudiste scraper
-│   ├── culture_scraper.py       # Eesti kultuurisündmused sündmuste scraper
 │   ├── kultuurikava_scraper.py  # Kultuurikava.ee sündmuste scraper
 │   ├── piletilevi_scraper.py    # Piletilevi.ee sündmuste scraper (pildid)
 │   ├── wikipedia_scraper.py     # Wikipedia kultuuriinfo scraper
@@ -104,6 +101,7 @@ Koidulauliku-E-laulik/
 │   ├── uudised.html             # Uudiste leht
 │   ├── syndmused.html           # Sündmuste leht
 │   ├── kultuur.html             # Kultuuri leht
+│   ├── galerii.html             # Galerii leht
 │   └── info.html                # Info leht
 │
 └── static/                   # Staatilised failid
@@ -118,8 +116,9 @@ Koidulauliku-E-laulik/
 1. **Avaleht**: Ülevaade kõigist kategooriatest ja otsing
 2. **Uudised**: Klikake "Uudised" menüüs, et näha värskemaid uudiseid
 3. **Sündmused**: Vaadake kultuuriüritusi ja nende detaile
-4. **Kultuur**: Lugege Eesti kultuuri kohta Wikipediast
-5. **Otsing**: Kasutage avalehe otsingukasti, et leida konkreetset infot
+4. **Galerii**: Avage pildivaade kultuurisündmustest
+5. **Kultuur**: Lugege Eesti kultuuri kohta Wikipediast
+6. **Otsing**: Kasutage avalehe otsingukasti, et leida konkreetset infot
 
 ## 🎨 Autoriõigused ja litsentsid
 
@@ -128,7 +127,7 @@ Koidulauliku-E-laulik/
 - **Rakenduse kood**: Autori enda loodud
 - **Google Fonts (Roboto)**: Apache License 2.0
 - **Wikipedia sisu**: Creative Commons Attribution-ShareAlike 3.0 Unported License
-- **ERR.ee, Postimees.ee, Eesti kultuurisündmused**: Avalikud allikad, kasutatud ainult viited
+- **ERR Kultuur, Kultuurikava, Piletilevi**: Avalikud allikad, kasutatud ainult viited
 
 ### Litsents
 
@@ -157,7 +156,7 @@ See projekt on loodud ASI Karika koduvooru ülesande raames. Projekti eesmärk o
 
 ### Hindamiskriteeriumid
 
-- ✅ **Informatsiooni rohkus**: 6 erinevat allikat (ERR Kultuur, Postimees, Kultuurikava, Piletilevi, Eesti kultuurisündmused, Wikipedia)
+- ✅ **Informatsiooni rohkus**: 4 erinevat allikat (ERR Kultuur, Kultuurikava, Piletilevi, Wikipedia)
 - ✅ **Web scraping tehnoloogiad**: BeautifulSoup ja Scrapy kasutamine
 - ✅ **Pildid kultuuriüritustest**: Piltide kogumine Piletilevi ja teistest allikatest
 - ✅ **Informatsiooni õigsus**: Usaldusväärsed allikad, automaatne andmete kogumine

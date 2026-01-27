@@ -11,6 +11,7 @@
     --primary-color: #0055A4;
     --secondary-color: #00A3E0;
     --accent-color: #FFD700;
+    --deep-blue: #0c2340;
     --text-color: #333;
     --text-light: #666;
     --bg-color: #f8f9fa;
@@ -24,6 +25,11 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--bg-color);
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', 'Roboto', serif;
+    letter-spacing: 0.4px;
 }
 
 .container {
@@ -88,7 +94,7 @@ body {
 .hero {
     text-align: center;
     padding: 3rem 1rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--deep-blue), var(--primary-color));
     color: var(--white);
     border-radius: 12px;
     margin-bottom: 2rem;
@@ -198,6 +204,7 @@ body {
     box-shadow: var(--shadow);
     transition: transform 0.3s, box-shadow 0.3s;
     text-align: center;
+    border: 1px solid rgba(0, 85, 164, 0.1);
 }
 
 .category-card:hover {
@@ -217,6 +224,70 @@ body {
 
 .category-card p {
     color: var(--text-light);
+}
+
+/* Gallery */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.gallery-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.gallery-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: var(--bg-color);
+}
+
+.gallery-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-content {
+    padding: 1.5rem;
+}
+
+.gallery-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+}
+
+.gallery-meta {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.gallery-meta > div {
+    margin-bottom: 0.25rem;
+}
+
+.gallery-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.gallery-link:hover {
+    color: var(--primary-color);
 }
 
 /* News List */
@@ -597,6 +668,10 @@ body {
     }
 
     .events-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
         grid-template-columns: 1fr;
     }
 

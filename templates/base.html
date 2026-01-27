@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
@@ -19,6 +19,7 @@
                 <li><a href="/" class="{% if request.path == '/' %}active{% endif %}">Avaleht</a></li>
                 <li><a href="/uudised" class="{% if request.path == '/uudised' %}active{% endif %}">Uudised</a></li>
                 <li><a href="/syndmused" class="{% if request.path == '/syndmused' %}active{% endif %}">Sündmused</a></li>
+                <li><a href="/galerii" class="{% if request.path == '/galerii' %}active{% endif %}">Galerii</a></li>
                 <li><a href="/kultuur" class="{% if request.path == '/kultuur' %}active{% endif %}">Kultuur</a></li>
                 <li><a href="/info" class="{% if request.path == '/info' %}active{% endif %}">Info</a></li>
             </ul>
@@ -35,7 +36,7 @@
         <div class="container">
             <p>&copy; 2026 Koidulauliku E-laulik | Loodud ASI Karika koduvoor</p>
             <p class="footer-credits">
-                Allikad: ERR.ee, Postimees.ee, Eesti kultuurisündmused, Wikipedia | 
+                Allikad: ERR Kultuur, Kultuurikava, Piletilevi, Wikipedia | 
                 <a href="/info">Loe lähemalt</a>
             </p>
         </div>

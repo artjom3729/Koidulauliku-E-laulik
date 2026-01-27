@@ -44,7 +44,7 @@ class ERRKultuurSpider(scrapy.Spider):
         link = element.css('a::attr(href)').get()
         if link:
             if not link.startswith('http'):
-                return response.urljoin(link)
+                return base_url.rstrip('/') + '/' + link.lstrip('/')
             return link
         return ''
     

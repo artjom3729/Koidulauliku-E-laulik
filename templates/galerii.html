@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Galerii - Koidulauliku E-laulik{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>📷 Kultuuripildid</h1>
+    <p>Hetkepildid Eesti kultuurisündmustest ja rahvuslikest hetkedest</p>
+</div>
+
+{% if error %}
+<div class="alert alert-warning">
+    <p>Galerii laadimisel tekkis viga. Näidatakse näidisvaateid.</p>
+</div>
+{% endif %}
+
+<div class="gallery-grid">
+    {% if gallery_items %}
+        {% for item in gallery_items %}
+        <article class="gallery-card">
+            <div class="gallery-image">
+                <img src="{{ item.image }}" alt="{{ item.title }}">
+            </div>
+            <div class="gallery-content">
+                <h2 class="gallery-title">{{ item.title }}</h2>
+                <div class="gallery-meta">
+                    {% if item.date %}<div>📅 {{ item.date }}</div>{% endif %}
+                    {% if item.location %}<div>📍 {{ item.location }}</div>{% endif %}
+                    {% if item.source %}<div>🔖 {{ item.source }}</div>{% endif %}
+                </div>
+                {% if item.link %}
+                <a href="{{ item.link }}" target="_blank" rel="noopener noreferrer" class="gallery-link">
+                    Vaata sündmust →
+                </a>
+                {% endif %}
+            </div>
+        </article>
+        {% endfor %}
+    {% else %}
+        <div class="no-content">
+            <p>Pilte ei leitud. Proovi hiljem uuesti.</p>
+        </div>
+    {% endif %}
+</div>
+
+<div class="back-link">
+    <a href="/">← Tagasi avalehele</a>
+</div>
+{% endblock %}

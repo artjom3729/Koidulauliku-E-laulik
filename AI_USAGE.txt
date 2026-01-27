@@ -526,3 +526,28 @@ valmis testimiseks.
 ═══════════════════════════════════════════════════════════════
 LÕPP
 ═══════════════════════════════════════════════════════════════
+
+═══════════════════════════════════════════════════════════════
+TÄIENDAVAD ARENDUSED (2026-01-27)
+═══════════════════════════════════════════════════════════════
+
+-------------------------------------------------------------------
+21. ALLIKATE UUENDAMINE JA GALERII LISAMINE
+-------------------------------------------------------------------
+
+Prompt:
+"Create a web application called \"Koidulauliku E-laulik\" with a news
+aggregator, event calendar, photo gallery, and simple interface. Please
+don't use eestigiid.ee and postimees.ee. Append to the ai_usage file."
+
+AI Vastus:
+- Eemaldas Postimees.ee ja eestigiid.ee allikad nii backendist kui UI-st
+- Uuendas uudiste allikaks ERR Kultuuri
+- Täiendas sündmuste allikaid Kultuurikava ja Piletilevi põhjal
+- Lisas uue galerii lehe koos fallback SVG piltidega
+- Uuendas README, juhend.txt ja ASSET_CREDITS.txt uute allikate ning fontide jaoks
+
+Kasutamine:
+Uuendasin app.py ja templated, et eemaldada keelatud allikad ning lisada
+galerii vaade. Lisasin galerii jaoks uue HTML malli, stiilid ja navigeerimise.
+Dokumentatsioon ja asset-credits on kooskõlla viidud uute allikatega.
