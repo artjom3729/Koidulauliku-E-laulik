@@ -22,6 +22,34 @@ wiki_scraper = WikipediaScraper()
 kultuurikava_scraper = KultuurikavaScraper()
 piletilevi_scraper = PiletileviScraper()
 
+def _safe_text(value):
+    if value is None:
+        return ''
+    if isinstance(value, bytes):
+        return value.decode('utf-8', errors='replace')
+    return str(value)
+
+def _query_matches(item, query):
+    if not isinstance(item, dict):
+        return False
+    title = _safe_text(item.get('title'))
+    description = _safe_text(item.get('description'))
+    content = _safe_text(item.get('content'))
+    return (
+        query in title.lower()
+        or query in description.lower()
+        or query in content.lower()
+    )
+
+def _normalize_search_item(item, category):
+    return {
+        'title': _safe_text(item.get('title')),
+        'description': _safe_text(item.get('description') or item.get('content')),
+        'content': _safe_text(item.get('content')),
+        'link': _safe_text(item.get('link')),
+        'category': category
+    }
+
 @app.route('/')
 def index():
     """Main page with overview of all categories"""
@@ -76,25 +104,22 @@ def search():
             news = err_scraper.get_news(limit=20)
             
             for item in news:
-                if query in item.get('title', '').lower() or query in item.get('description', '').lower():
-                    item['category'] = 'Uudised'
-                    results.append(item)
+                if _query_matches(item, query):
+                    results.append(_normalize_search_item(item, 'Uudised'))
         
         if category in ['all', 'syndmused']:
             kultuurikava_events = kultuurikava_scraper.get_events(limit=20)
             piletilevi_events = piletilevi_scraper.get_cultural_events(limit=20)
             events = kultuurikava_events + piletilevi_events
             for item in events:
-                if query in item.get('title', '').lower() or query in item.get('description', '').lower():
-                    item['category'] = 'Sündmused'
-                    results.append(item)
+                if _query_matches(item, query):
+                    results.append(_normalize_search_item(item, 'Sündmused'))
         
         if category in ['all', 'kultuur']:
             culture_info = wiki_scraper.get_culture_info()
             for item in culture_info:
-                if query in item.get('title', '').lower() or query in item.get('content', '').lower():
-                    item['category'] = 'Kultuur'
-                    results.append(item)
+                if _query_matches(item, query):
+                    results.append(_normalize_search_item(item, 'Kultuur'))
     except Exception as e:
         print(f"Search error: {e}")
     
