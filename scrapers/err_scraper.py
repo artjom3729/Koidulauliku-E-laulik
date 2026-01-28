@@ -102,7 +102,7 @@ class ERRNewsScraper:
                 'link': 'https://kultuur.err.ee/1609641086/eesti-kultuurielu-uudised',
                 'date': datetime.now().strftime('%Y-%m-%d'),
                 'source': 'ERR Kultuur',
-                'image': 'https://s.err.ee/photo/crop/2024/01/15/2011816h6b21t12.jpg'
+                'image': 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=640&q=80'
             },
             {
                 'title': 'Uus näitus Eesti kunstimuuseumis',
@@ -110,7 +110,7 @@ class ERRNewsScraper:
                 'link': 'https://kultuur.err.ee/1609641087/uus-naitus-eesti-kunstimuuseumis',
                 'date': datetime.now().strftime('%Y-%m-%d'),
                 'source': 'ERR Kultuur',
-                'image': 'https://s.err.ee/photo/crop/2024/01/15/2011817h6b21t12.jpg'
+                'image': 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=640&q=80'
             },
             {
                 'title': 'Kontsert Tallinnas tähistab rahvuslikku päeva',
@@ -118,6 +118,6 @@ class ERRNewsScraper:
                 'link': 'https://kultuur.err.ee/1609641088/kontsert-tallinnas-tahistab-rahvuslikku-paeva',
                 'date': datetime.now().strftime('%Y-%m-%d'),
                 'source': 'ERR Kultuur',
-                'image': 'https://s.err.ee/photo/crop/2024/01/15/2011818h6b21t12.jpg'
+                'image': 'https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=640&q=80'
             }
         ]
