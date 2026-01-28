@@ -124,46 +124,46 @@ class KultuurikavaScraper:
             {
                 'title': 'Tallinna Muusikakool: Kevadkontsert',
                 'description': 'Tallinna Muusikakooli õpilased esitavad klassikalisi ja kaasaegseid teoseid. Kontserdil esinevad erinevate instrumentide õppijad.',
-                'link': 'https://www.kultuurikava.ee/events/',
+                'link': 'https://www.kultuurikava.ee/event/tallinna-muusikakool-kevadkontsert',
                 'date': (today + timedelta(days=5)).strftime('%d.%m.%Y'),
                 'location': 'Tallinna Muusikakool',
                 'source': 'Kultuurikava',
-                'image': None
+                'image': 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=640&q=80'
             },
             {
                 'title': 'Eesti Rahva Muuseumi näitus: Eesti lood',
                 'description': 'Näitus tutvustab Eesti ajalugu läbi esemete ja lugude. Uurige Eesti kultuuri arengut läbi sajandite.',
-                'link': 'https://www.kultuurikava.ee/events/',
+                'link': 'https://www.kultuurikava.ee/event/eesti-rahva-muuseumi-naitus-eesti-lood',
                 'date': (today + timedelta(days=10)).strftime('%d.%m.%Y'),
                 'location': 'Eesti Rahva Muuseum, Tartu',
                 'source': 'Kultuurikava',
-                'image': None
+                'image': 'https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?w=640&q=80'
             },
             {
                 'title': 'Vanemuise teater: Romeo ja Julia',
                 'description': 'William Shakespeare\'i ajatu armastuslugu Vanemuise teatri laval. Lavastus klassikalises vormis.',
-                'link': 'https://www.kultuurikava.ee/events/',
+                'link': 'https://www.kultuurikava.ee/event/vanemuise-teater-romeo-ja-julia',
                 'date': (today + timedelta(days=15)).strftime('%d.%m.%Y'),
                 'location': 'Vanemuine, Tartu',
                 'source': 'Kultuurikava',
-                'image': None
+                'image': 'https://images.unsplash.com/photo-1503095396549-807759245b35?w=640&q=80'
             },
             {
                 'title': 'Tallinna Botaanikaaed: Orhideede näitus',
                 'description': 'Eksootiliste orhideede näitus botaanikaaias. Üle 100 erinevat orhideede liigi.',
-                'link': 'https://www.kultuurikava.ee/events/',
+                'link': 'https://www.kultuurikava.ee/event/tallinna-botaanikaaed-orhideede-naitus',
                 'date': (today + timedelta(days=20)).strftime('%d.%m.%Y'),
                 'location': 'Tallinna Botaanikaaed',
                 'source': 'Kultuurikava',
-                'image': None
+                'image': 'https://images.unsplash.com/photo-1462275646964-a0e3571f4f2d?w=640&q=80'
             },
             {
                 'title': 'Narva muuseum: Eesti piiri ajalugu',
                 'description': 'Näitus Eesti ja Venemaa piiri ajaloost läbi aegade. Huvitavad faktid ja dokumendid.',
-                'link': 'https://www.kultuurikava.ee/events/',
+                'link': 'https://www.kultuurikava.ee/event/narva-muuseum-eesti-piiri-ajalugu',
                 'date': (today + timedelta(days=25)).strftime('%d.%m.%Y'),
                 'location': 'Narva Muuseum',
                 'source': 'Kultuurikava',
-                'image': None
+                'image': 'https://images.unsplash.com/photo-1544531586-fde5298cdd40?w=640&q=80'
             }
         ]

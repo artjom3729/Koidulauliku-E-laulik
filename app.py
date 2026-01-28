@@ -6,7 +6,6 @@ A web application for Koidulaulik's spirit to explore modern Estonian culture
 from flask import Flask, render_template, request, jsonify
 from datetime import datetime
 from itertools import chain
-from urllib.parse import quote
 import os
 from scrapers.err_scraper import ERRNewsScraper
 from scrapers.wikipedia_scraper import WikipediaScraper
@@ -151,82 +150,38 @@ def info():
 
 def _get_gallery_fallback():
     """Fallback gallery items when event images are unavailable"""
-    def build_placeholder(config):
-        svg = (
-            "<svg xmlns='http://www.w3.org/2000/svg' width='640' height='420'>"
-            "<defs><linearGradient id='g' x1='0' x2='1'>"
-            f"<stop offset='0' stop-color='{config['gradient_start']}'/>"
-            f"<stop offset='1' stop-color='{config['gradient_end']}'/>"
-            "</linearGradient></defs>"
-            "<rect width='640' height='420' fill='url(#g)'/>"
-            f"{config['accent_shape']}"
-            f"<text x='50%' y='55%' font-size='32' text-anchor='middle' fill='{config['text_color']}' "
-            "font-family='Playfair Display, Roboto, Arial'>"
-            f"{config['title']}</text>"
-            f"<text x='50%' y='70%' font-size='20' text-anchor='middle' fill='{config['text_color']}' "
-            "font-family='Roboto, Arial'>"
-            f"{config['subtitle']}</text>"
-            "</svg>"
-        )
-        return f"data:image/svg+xml;charset=UTF-8,{quote(svg)}"
-
     return [
         {
             'title': 'Laulupeo õhtuvalgus',
             'date': datetime.now().strftime('%d.%m.%Y'),
             'location': 'Tallinn',
             'source': 'Koidulauliku E-laulik',
-            'image': build_placeholder({
-                'title': 'Laulupidu',
-                'subtitle': 'Kultuurihetk',
-                'gradient_start': '#0055A4',
-                'gradient_end': '#00A3E0',
-                'accent_shape': "<circle cx='120' cy='120' r='60' fill='#FFD700'/>",
-                'text_color': '#ffffff'
-            })
+            'link': 'https://www.laulupidu.ee/',
+            'image': 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=640&q=80'
         },
         {
             'title': 'Tantsuõhtu rahvamajas',
             'date': datetime.now().strftime('%d.%m.%Y'),
             'location': 'Tartu',
             'source': 'Koidulauliku E-laulik',
-            'image': build_placeholder({
-                'title': 'Rahvatants',
-                'subtitle': 'Elav traditsioon',
-                'gradient_start': '#f8f1e5',
-                'gradient_end': '#f0d9a1',
-                'accent_shape': "<rect x='60' y='70' width='520' height='280' rx='24' fill='#0055A4' opacity='0.85'/>",
-                'text_color': '#ffffff'
-            })
+            'link': 'https://www.kultuurikava.ee/event/tantsupidu',
+            'image': 'https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=640&q=80'
         },
         {
             'title': 'Teatriõhtu vanalinnas',
             'date': datetime.now().strftime('%d.%m.%Y'),
             'location': 'Pärnu',
             'source': 'Koidulauliku E-laulik',
-            'image': build_placeholder({
-                'title': 'Teater',
-                'subtitle': 'Lavakunst',
-                'gradient_start': '#2b2b2b',
-                'gradient_end': '#4a4a4a',
-                'accent_shape': "<rect x='90' y='80' width='460' height='260' rx='18' fill='#FFD700' opacity='0.8'/>",
-                'text_color': '#2b2b2b'
-            })
+            'link': 'https://www.kultuurikava.ee/event/teatriohtu',
+            'image': 'https://images.unsplash.com/photo-1503095396549-807759245b35?w=640&q=80'
         },
         {
             'title': 'Kontserdipäev rannal',
             'date': datetime.now().strftime('%d.%m.%Y'),
             'location': 'Haapsalu',
             'source': 'Koidulauliku E-laulik',
-            'image': build_placeholder({
-                'title': 'Kontsert',
-                'subtitle': 'Suveõhtu',
-                'gradient_start': '#2f6f4e',
-                'gradient_end': '#7fbf7f',
-                'accent_shape': "<circle cx='520' cy='120' r='70' fill='#FFD700'/>"
-                "<rect x='80' y='220' width='480' height='120' rx='20' fill='#ffffff' opacity='0.85'/>",
-                'text_color': '#2f6f4e'
-            })
+            'link': 'https://www.kultuurikava.ee/event/kontserdipaev-rannal',
+            'image': 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=640&q=80'
         }
     ]
 

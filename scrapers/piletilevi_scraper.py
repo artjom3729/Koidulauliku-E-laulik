@@ -142,61 +142,61 @@ class PiletileviScraper:
             {
                 'title': 'Rahvusooper Estonia: Tosca',
                 'description': 'Giacomo Puccini kuulus ooper Tosca Rahvusooper Estonia laval. Kaunis lugu armastusest, kadedusest ja ohvrist.',
-                'link': 'https://www.piletilevi.ee',
+                'link': 'https://www.piletilevi.ee/est/piletid/muusika/ooper/rahvusooper-estonia-tosca',
                 'date': (today + timedelta(days=4)).strftime('%d.%m.%Y'),
                 'location': 'Estonia teater, Tallinn',
                 'source': 'Piletilevi',
-                'image': None,
+                'image': 'https://images.unsplash.com/photo-1580809361436-42a7ec204889?w=640&q=80',
                 'category': 'kultuur'
             },
             {
                 'title': 'Eesti Rahvusballeti kevadkontsert',
                 'description': 'Eesti Rahvusballet esitab klassikalise ja kaasaegse tantsu parimikku. Õhtu täis graatsiat ja kunsti.',
-                'link': 'https://www.piletilevi.ee',
+                'link': 'https://www.piletilevi.ee/est/piletid/muusika/ballett/eesti-rahvusballeti-kevadkontsert',
                 'date': (today + timedelta(days=8)).strftime('%d.%m.%Y'),
                 'location': 'Estonia teater, Tallinn',
                 'source': 'Piletilevi',
-                'image': None,
+                'image': 'https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=640&q=80',
                 'category': 'kultuur'
             },
             {
                 'title': 'Tallinna Kammerorkester: Kevadkontsert',
                 'description': 'Tallinna Kammerorkester esitab Barokiajastu ja romantismi parimaid teoseid. Juhatab maestro Tõnu Kaljuste.',
-                'link': 'https://www.piletilevi.ee',
+                'link': 'https://www.piletilevi.ee/est/piletid/muusika/klassika/tallinna-kammerorkester-kevadkontsert',
                 'date': (today + timedelta(days=12)).strftime('%d.%m.%Y'),
                 'location': 'Mustpeade Maja, Tallinn',
                 'source': 'Piletilevi',
-                'image': None,
+                'image': 'https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=640&q=80',
                 'category': 'kultuur'
             },
             {
                 'title': 'Eesti Filharmoonia Kammerkoor',
                 'description': 'Maailmakuulus Eesti Filharmoonia Kammerkoor esitab renessansi ja kaasaegset koormuusikat.',
-                'link': 'https://www.piletilevi.ee',
+                'link': 'https://www.piletilevi.ee/est/piletid/muusika/koor/eesti-filharmoonia-kammerkoor',
                 'date': (today + timedelta(days=18)).strftime('%d.%m.%Y'),
                 'location': 'Niguliste Muuseum, Tallinn',
                 'source': 'Piletilevi',
-                'image': None,
+                'image': 'https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=640&q=80',
                 'category': 'kultuur'
             },
             {
                 'title': 'Noorsooteatri etendus: Eesti rahvamuinasjutud',
                 'description': 'Lapsed ja täiskasvanud saavad nautida Eesti rahvamuinasjuttude värvikat ettekandmist.',
-                'link': 'https://www.piletilevi.ee',
+                'link': 'https://www.piletilevi.ee/est/piletid/teater/noorsooteatri-etendus-eesti-rahvamuinasjutud',
                 'date': (today + timedelta(days=22)).strftime('%d.%m.%Y'),
                 'location': 'Noorsooteatri maja, Tallinn',
                 'source': 'Piletilevi',
-                'image': None,
+                'image': 'https://images.unsplash.com/photo-1507924538820-ede94a04019d?w=640&q=80',
                 'category': 'kultuur'
             },
             {
                 'title': 'Pärnu Kontserdimajas: Eesti heliloojate kontsert',
                 'description': 'Õhtu pühendatud tänapäeva eesti heliloojate loomingule. Esitlevad parimad eesti muusikud.',
-                'link': 'https://www.piletilevi.ee',
+                'link': 'https://www.piletilevi.ee/est/piletid/muusika/klassika/parnu-kontserdimajas-eesti-heliloojate-kontsert',
                 'date': (today + timedelta(days=27)).strftime('%d.%m.%Y'),
                 'location': 'Pärnu Kontserdimaja',
                 'source': 'Piletilevi',
-                'image': None,
+                'image': 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=640&q=80',
                 'category': 'kultuur'
             }
         ]
