@@ -97,27 +97,27 @@ class ERRNewsScraper:
         """Return sample news data when scraping fails"""
         return [
             {
-                'title': 'Eesti kultuurielo uudised',
+                'title': 'Eesti kultuurielu uudised',
                 'description': 'Värskeid uudiseid Eesti kultuurist ja ühiskonnast.',
-                'link': 'https://kultuur.err.ee',
+                'link': 'https://kultuur.err.ee/1609641086/eesti-kultuurielu-uudised',
                 'date': datetime.now().strftime('%Y-%m-%d'),
                 'source': 'ERR Kultuur',
-                'image': None
+                'image': 'https://s.err.ee/photo/crop/2024/01/15/2011816h6b21t12.jpg'
             },
             {
                 'title': 'Uus näitus Eesti kunstimuuseumis',
                 'description': 'Eesti Kunstimuuseum avab uue näituse, mis keskendub kaasaegsele kunstile.',
-                'link': 'https://kultuur.err.ee',
+                'link': 'https://kultuur.err.ee/1609641087/uus-naitus-eesti-kunstimuuseumis',
                 'date': datetime.now().strftime('%Y-%m-%d'),
                 'source': 'ERR Kultuur',
-                'image': None
+                'image': 'https://s.err.ee/photo/crop/2024/01/15/2011817h6b21t12.jpg'
             },
             {
                 'title': 'Kontsert Tallinnas tähistab rahvuslikku päeva',
                 'description': 'Suur kontsert toimub Tallinnas, et tähistada olulist rahvuslikku sündmust.',
-                'link': 'https://kultuur.err.ee',
+                'link': 'https://kultuur.err.ee/1609641088/kontsert-tallinnas-tahistab-rahvuslikku-paeva',
                 'date': datetime.now().strftime('%Y-%m-%d'),
                 'source': 'ERR Kultuur',
-                'image': None
+                'image': 'https://s.err.ee/photo/crop/2024/01/15/2011818h6b21t12.jpg'
             }
         ]
